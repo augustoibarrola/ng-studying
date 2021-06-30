@@ -33,6 +33,10 @@ export class ReactiveFormComponent {
     console.log("Valid? : ", form.valid);
     console.log("First Name : ", form.value.firstName);
     console.log("Last Name : ", form.value.lastName);
+    console.log(form.controls)
+    // console.log(form.controls.registerForm.markAsUntouched)
+    this.registerForm.reset();
+
   }
 
 }

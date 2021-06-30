@@ -65,8 +65,16 @@
   border-left: 5px solid #a94442; /* red */
 }
 -->
-<div *ngIf="showSubmitResults && registerForm.dirty">
-{{registerForm.value.firstName}}
+<div *ngIf="showSubmitResults && registerForm.untouched">
+  this div will appear when submit button is hit. 
+  <ul>
+    <li>
+      it must disapear when the form is touched again 
+    </li>
+    <li>
+      the values submitted through the form must be stored somewhere/how in the component (in a model class of sorts yet to be created) or else they will not appear as the form's values are reset on submission. 
+    </li>
+  </ul>
 </div>
 
 <br/>

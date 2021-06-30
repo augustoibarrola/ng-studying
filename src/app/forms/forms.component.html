@@ -1,13 +1,21 @@
-<h3>Forms</h3>
+<h2>Forms</h2>
 
-<div>
-    <reactive-form></reactive-form>
-</div>
+Click below for a topic
 
-<div>
+<br>
+
+<button (click)="showTemplateFormBtn()">Template Forms</button>
+<button (click)="showReactiveFormBtn()">Reactive Forms</button>
+<button (click)="showValidationsBtn()">Form Validations</button>
+
+<div *ngIf="showTemplateForm">
     <template-form></template-form>
 </div>
 
-<div>
+<div *ngIf="showReactiveForm">
+    <reactive-form></reactive-form>
+</div>
+
+<div *ngIf="showValidations">
     <validations-template></validations-template>
 </div>
