@@ -1,0 +1,80 @@
+<h3>Reactive Forms</h3>
+
+<p>Used for <em>Large</em> forms</p>
+<p>
+  Reactive Forms work by creating form control objects in the component class of
+  a template and binding them with HTML form elements
+</p>
+<p>Reactive Forms are also called <i>Model Drive Forms</i></p>
+
+<p>
+  <strong><code>FormBuilder</code></strong> from
+  <b><code>ReactiveFormsModule</code></b> is used to create Reactive Forms.
+  <b><code>ReactiveFormsModule</code></b> must be imported in the corresponding
+  module of the form's component and then placed inside the
+  <code>imports:[]</code> field of <code><b>@NgModule</b></code>
+</p>
+
+<div class="form-formatter">
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+    <div class="form-group">
+      <label class="label-text-black">First Name</label>
+      <input type="text" class="form-control" formControlName="firstName" />
+      <div
+      *ngIf="registerForm.controls.firstName.hasError('required') && registerForm.controls.firstName.dirty"
+      class="alert alert-danger"
+      >
+      This is a required field
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" formControlName="lastName" />
+    <p *ngIf="registerForm.controls.lastName.hasError('required') && registerForm.controls.lastName.dirty" class="alert alert-danger">
+      This field is required!
+    </p>
+  </div>
+  <div class="form-group fieldset-group">
+    <fieldset formGroupName="address">
+      <div class="form-control">
+        <label>Street</label>
+        <input type="text" class="form-control" formControlName="street" />
+      </div>
+      <div class="form-control">
+        <label>Zip</label>
+        <input type="text" class="form-control" formControlName="zip" />
+      </div>
+      <div class="form-control">
+        <label>City</label>
+        <input type="text" class="form-control" formControlName="city" />
+      </div>
+    </fieldset>
+  </div>
+  
+  <button type="submit">Submit</button>
+</form>
+</div>
+
+<!-- Angular CSS Directives to be written in ./reactive-form.component.css -->
+
+<!-- .ng-valid[required]  {
+  border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+-->
+<div *ngIf="showSubmitResults && registerForm.dirty">
+{{registerForm.value.firstName}}
+</div>
+
+<br/>
+
+<p>
+  formGroup is a directive that binds HTML form with the FormGroup property created inside a component class. We have created a FormGroup in component with name registerForm. Here form tag is binded with FormGroup registerForm
+</p>
+
+<p>
+    Two input fields for first name and last name are binded with the form controls created in the component using the formControlName directive
+</p>

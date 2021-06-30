@@ -1,0 +1,52 @@
+<h3>Services</h3>
+
+<p>Services allow for the seperation of concerns. It follows the <b>Single Responsibility Principle</b></p>
+
+<p>A service in Angular is a class that contains some functionality that can be reused across the application. A service is a singleton object.</p>
+<p>Angular services come as objects which are wired together using dependency injection.
+</p>
+<p>Services are often used to make HTTP Requests. Servcie classes should handle these requests as well as error inspection, interpretation, and resolution, leaving the component classes to deal with business and view logic.</p>
+<p>There is no separate decorator to indicate that a class is a service class</p>
+
+<code>@Injectable()</code> annotation marks a class as a custom-made service class.
+
+Service classes should be placed withing the <code>providers:[]</code> attribute of <code>NgModule()</code>.
+
+
+<h4>HttpClient</h4>
+
+<p>
+    <strong><code>HttpClientModule</code></strong> from <code>@angular/common/http</code> is used to communicate with backend services from an Angular frontend.
+</p>
+
+<code>HttpClient</code> should be injected into a component class through the its <code>constructor</code>. It'll then offer up methods such as <code>get</code>, <code>post</code>, <code>put</code>, and <code>delete</code>. <code>JSON</code> data that is returned from the backend will be automatically converted to any desired type with these methods. 
+
+<p>
+    All HTTP requests are asynchronous and return <code>Observable</code>.
+</p>
+
+<h4><code>Observable</code></h4>
+
+<code>Observable</code> (from <code>RxJs</code> library) objects can be described as objects that arrive over time. They produce data that must be <code>subscribe</code>d to to be used. <code>Observable</code> objects represent asynchronous requests. Sending requests and responses asynchronously increases the performance of Angular applications, and this is done with the help of <code>Observable</code> objects. 
+
+<h4><code>Observable.subscribe()</code></h4>
+
+The <code>.subscribe</code> method "listens" for data coming from a given <code>Observable</code> object. It takes three parameters: 
+
+<ol>
+    <li>
+        a success callback which will be invoked upon successful data retrieval from the <code>Obseravble</code> object.
+    </li>
+    <li>
+        an error callback which is invoked if an error is returned.
+    </li>
+    <li>
+        a complete callback which is invoked upon successful streaming of values from <code>Observable</code>.
+    </li>
+</ol>
+
+<h4>CORS (Cross Origin Resource Sharing)</h4>
+
+CORS refers to any frontend request that is made to a backend that is setup on a different host/port. Unless said backend service is CORS enabled, communcation between the frontend and backend cannot happen. A backend must specify "Origins" are allowed to request resources from it. 
+
+

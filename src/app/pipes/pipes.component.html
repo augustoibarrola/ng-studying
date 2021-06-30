@@ -1,0 +1,70 @@
+<h3>Pipes</h3>
+
+<p>
+  Multiple pipes can be used at a time on a single expression, as long as the
+  pipes are compatible with each other.
+</p>
+
+<button (click)="switchDivs()"> Show Divs </button>
+
+<br />
+
+<div *ngIf="showBuiltInPipes">
+  <h4>Built-In Angular Pipes</h4>
+  <ul>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>uppercase</strong> </code>
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>lowercase</strong> </code>
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>titlecase</strong> </code>
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>currency</strong> </code>
+      <!-- https://angular.io/api/common/CurrencyPipe -->
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>date</strong> </code>
+      <!-- https://angular.io/api/common/DatePipe -->
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>percent</strong> </code>
+      <!-- https://angular.io/api/common/PercentPipe -->
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>slice</strong> </code>
+      <!-- https://angular.io/api/common/SlicePipe -->
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>decimal</strong> </code>
+      <!-- https://angular.io/api/common/DecimalPipe -->
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>json</strong> </code>
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>i18nplural</strong> </code>
+    </li>
+    <li>
+      <code ng-non-bindable> <i>expression</i> | <strong>i18nselect</strong> </code>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="showCustomPipes">
+  <h4>Custom Pipes</h4>
+      <!-- <code ng-non-bindable> -->
+          <!-- @Pipe({ name: 'pipename' }) export class classname implements PipeTransform -->
+          <!-- { transform(value: any, ...args:any[]): any { } } -->
+        <!-- </code> -->
+
+        <p>
+           <code> transform()</code> method has two arguments, first one is the <i><b>value of the expression passed to the pipe</b></i> and the <i><b>second is a variable "arguments". We can have multiple arguments based on the number of parameters passed to the pipe.</b></i> The transform method should return the final value.
+        </p>
+
+        <p>
+            Custom made pipes need to be added to the <code>declarations:[]</code> property of the file's respective <code>@NgModule</code> file.
+        </p>
+</div>

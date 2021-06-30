@@ -1,0 +1,26 @@
+<!-- *ngIf 
+    The below code will throw an error since, by design, hero is undefined in the component class on initialization. 
+    Not until a hero is selected above does hero recieve a hero. When this happens, the below code will not throw an error. 
+    Hence, using `*ngIf` will create or destroy depending on if hero is empty or not, and this will stop the code from throwing
+    an error since, until hero references a non-null/non-undefined value, *ngIf keeps the div off the DOM tree completley. 
+-->
+<div *ngIf="hero">
+    <h2>{{ hero.name | uppercase }} Details </h2>
+    <div>
+        <span>Id: </span> {{hero.id}}
+    </div>
+    <div>
+        <label for="hero-name"> Hero Name: </label>
+        <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero Name">
+    </div>
+    <div>
+        <label for="hero-counter"> Counter: </label>
+        <input id="hero-counter" placeholder={{hero.counter}} disabled>
+    </div>
+</div>
+<div>
+    <button (click)="goBack()"> Go Back </button>
+</div>
+<div>
+    <button (click)="outputMsgTrigger(hero)"> Increase Counter </button>
+</div>

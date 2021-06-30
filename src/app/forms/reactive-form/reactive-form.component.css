@@ -1,0 +1,9 @@
+.form-formatter{
+    width: 50%;
+    height: auto;
+    padding: 2.5%;
+}
+
+.fieldset-group{
+    border-style: solid 1px;
+}
