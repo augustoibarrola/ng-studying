@@ -8,6 +8,7 @@ import { TemplateFormComponent } from './forms/template-form/template-form.compo
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ServicesComponent } from './services/services.component';
+import { FormsComponent } from './forms/forms.component';
 
 /* Routes tell the Router which view to display when a user clicks a link or pastes a URL into the browser address bar */
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'heroes/:id', component: HeroDetailComponent},
   {path:'dashboard', component: DashboardComponent},
   {path: 'directives', component: DirectivesDemoComponent},
+  {path: 'forms', component: FormsComponent},
   {path: 'template-form', component: TemplateFormComponent},
   {path: 'reactive-form', component: ReactiveFormComponent},
   {path: 'pipes', component: PipesComponent},
