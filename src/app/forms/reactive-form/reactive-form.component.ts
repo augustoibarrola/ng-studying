@@ -12,6 +12,33 @@ export class ReactiveFormComponent {
   registerForm: FormGroup;
   showSubmitResults: Boolean;
   response: HighlightResult;
+  formModuleImports=`import { ReactiveFormsModule } from '@angular/forms';
+
+  @NgModule({
+    declarations: [
+      ReactiveFormComponent,
+    ],
+    imports: [
+      ReactiveFormsModule,
+    ],
+    providers: [],
+    bootstrap: []
+  })
+  export class AppModule { }
+  `;
+  formComponent=  `import { FormBuilder, FormGroup } from '@angular/forms';
+
+  export class ReactiveFormComponent {
+
+    registerForm: FormGroup;
+    
+    constructor(private formBuilder: FormBuilder) { }
+  
+    onSubmit(): void {
+      //some function to be executed on submit event
+    }
+  }
+  `;
   formTemplate = `
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
@@ -48,19 +75,6 @@ export class ReactiveFormComponent {
   </div>
   <button type="submit">Submit</button>
 </form>
-  `;
-
-  formComponent=  `
-  export class ReactiveFormComponent {
-    registerForm: FormGroup;
-    
-    constructor(private formBuilder: FormBuilder) { }
-
-    onSubmit(): void {
-      //some function to be executed on submit event
-    }
-  }
-
   `;
 
   constructor(private formBuilder: FormBuilder) { }

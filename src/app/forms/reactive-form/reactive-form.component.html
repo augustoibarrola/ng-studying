@@ -1,36 +1,59 @@
-<h3>Reactive Forms</h3>
-
-<p>Used for <em>Large</em> forms</p>
-<p>
-  Reactive Forms work by creating form control objects in the component class of
-  a template and binding them with HTML form elements
-</p>
-<p>Reactive Forms are also called <i>Model Drive Forms</i></p>
-
-<p>
-  <strong><code>FormBuilder</code></strong> from
-  <b><code>ReactiveFormsModule</code></b> is used to create Reactive Forms.
-  <b><code>ReactiveFormsModule</code></b> must be imported in the corresponding
-  module of the form's component and then placed inside the
-  <code>imports:[]</code> field of <code><b>@NgModule</b></code>
-</p>
-
-<!-- <div class="form-formatter"> -->
 <div class="container">
+  <div class="row">
+
+    <h3>Reactive Forms</h3>
+    <div>
+
+      Reactive Forms (also called <i>Model Drive Forms</i>) are best suited for <em>Large</em> forms (i.e., forms with
+      more than two or three simple input
+      fields and labels).
+      <br>
+      <br>
+      Reactive Forms work by creating form control objects in the component class of
+      a template and binding those controls with HTML form elements in the template.
+      <br>
+      <br>
+      <strong><code>FormBuilder</code></strong> from <b><code>`@angular/forms`</code></b> is used to create Reactive
+      Forms within the component class.
+      <br>
+      <br>
+      <strong><code>ReactiveFormsModule</code></strong> from <b><code>`@angular/forms`</code></b>must be imported in the
+      corresponding <b>module</b> of the form's component and then placed inside the
+      <code>imports:[]</code> field of <code><b>@NgModule</b></code> in order to use Reactive Forms in Angular.
+
+    </div>
+
+  </div>
+
+  <div class="row align items-center">
+    <div class="col-sm-6">
+      <!-- code for ngmodule imports -->
+      <pre><code [highlight]="formModuleImports" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript"></code></pre>
+
+    </div>
+    <div class="col-sm-6">
+      <!-- explanation -->
+      
+    </div>
+  </div>
+
   <div class="row align-items-center">
+
     <div class=" col-sm-6">
       <pre><code [highlight]="formComponent" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript"></code></pre>
     </div>
+
     <div class=" col-sm-6">
-      something something components something something components something something components something something
-      components something something components something something components something something components something
-      something components
+      <code>FormBuilder</code> is imported to create reactive forms.
+      <br>
+      <br>
+      <code>FormGroup</code> is imported to create a group of form controls.
     </div>
+
   </div>
+
   <div class="row align-items-center">
     <div class="col-sm-6">
-
-
       <pre><code [highlight]="formTemplate" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-html"></code></pre>
 
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
@@ -60,16 +83,6 @@
         </div>
         <button type="submit">Submit</button>
       </form>
-
-      <!-- Angular CSS Directives to be written in ./reactive-form.component.css -->
-
-      <!-- .ng-valid[required]  {
-        border-left: 5px solid #42A948; /* green */
-      }
-      .ng-invalid:not(form)  {
-        border-left: 5px solid #a94442; /* red */
-      }
-    -->
       <div *ngIf="showSubmitResults && registerForm.untouched">
         this div will appear when submit button is hit.
         <ul>
@@ -84,19 +97,17 @@
         </ul>
       </div>
     </div>
-  <div class=" col-sm-6">
 
-    <p>
-      formGroup is a directive that binds HTML form with the FormGroup property created inside a component class. We
-      have
-      created a FormGroup in component with name registerForm. Here form tag is binded with FormGroup registerForm
-    </p>
+    <div class=" col-sm-6">
 
-    <p>
-      Two input fields for first name and last name are binded with the form controls created in the component using
-      the
-      formControlName directive
-    </p>
+        <strong><code>[formGroup]="registerForm"</code></strong> is a directive that binds the HTML form tag with the <code>FormGroup</code> property created in the component class (i.e., <code>registerForm: FormGroup</code>). This connects the form and all it's children values to the property in the template's corresponding component class. 
+<br>
+<br>
+
+When a submit button is clicked in a reactive form, the form is submitted through its <code>ngSubmit</code> directive, initializing the form's <i>submitted</i> proeprty to <code>true</code>. Hence, <strong><code>(ngSubmit)="onSubmit()"</code></strong>, indicating on that, upon submission, the <code>onSubmit()</code> function within the component class will be executed.
+
+    </div>
+
   </div>
-</div>
+
 </div>
