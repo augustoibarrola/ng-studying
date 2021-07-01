@@ -3,100 +3,90 @@
 <p>Used for <b>Small and Medium sized</b> Forms</p>
 
 <br />
-&ltform&gt
-<code>
-  &ltform #formRef = "ngForm" (ngSubmit) = "onSubmit()"><br />
-  <\label for="sampleInput">Sample Input: <\/label><br />
-  <\input type="text" class="form-control" name="controlname" id="sampleInput"
-  [(ngModel)]="classVariable" #variable ="ngModel"/><br />
-  <\/form>
-</code>
+<div class="container">
+<div class="row align-items-center">
 
-<p>Validations</p>
-
-<code>
-  <\div [hidden]="variable.valid || variable.pristine"> Validation Warning Div
-  <\/div>
-</code>
-
-<br />
-<br />
-
-
-<form #formRef="ngForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <input
-      class="form-control"
-      name="controlname"
-      [(ngModel)]="classVariable"
-      #variable="ngModel"
-    />
-    <div [hidden]="variable.pristine">Validation Warning Div</div>
+  <div class="col-sm">
+    
+    <pre><code [highlight]="formCode" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-html"></code></pre>
+    
+    
+    <form #formRef = "ngForm" (ngSubmit) = "onSubmit()"><br />
+      <label for="sampleInput">Sample Input: </label><br />
+      <input type="text" class="form-control" name="controlname" id="sampleInput"
+      [(ngModel)]="classVariable" #variable ="ngModel"/><br />
+    </form>
+    
   </div>
-</form>
 
-<p>
-  <strong>ngForm</strong>: Provides information about the current state of the
-  form including a JSON representation of the form value and the validity state
-  of the entire form
-</p>
+  <div class="col-sm">
+    
+    <p>
+      <strong>ngForm</strong>: Provides information about the current state of the
+      form including a JSON representation of the form value and the validity state
+      of the entire form
+    </p>
+    
+    <br />
+    
+    <p>
+      In Angular, <b>ngForm</b> is a <em>directive</em> used in a form tag to obtain
+    </p>
+    
+    <ul>
+      <li>The values of the various form fields in that respective form</li>
+      <li>
+        Information about the <em>state</em> of a form (i.e., whether it is valid,
+        invalid, etc.)
+      </li>
+    </ul>
+    
+    <br />
+    
+    <p>
+      <strong>FormsModule</strong> from
+      <strong><code>@angular/forms</code></strong> must be imported in the
+      <b>AppsModule</b> (or whatever module the form's encompassing component is
+      found in) and added to the <b>imports:[]</b> array so that it can be used
+      throughout the components of the application.
+    </p>
+    
+    <p>
+      <strong>ngModel</strong>: Provides two-way data binding between the view and
+      component. It is also used to track the state and validity of the input field.
+    </p>
+    
+    <p>
+      <strong>ngSubmit</strong>: Fires an event specified by ngSubmit when the form
+      is submitted
+    </p>
+    
+    <p>
+      <strong>#formRef="ngForm" </strong>is a template variable that has an instance
+      of ngForm or Angular from. <code>#formRef</code> is thus an
+      <code>ngForm</code> directive instance whcih represents the entire form
+    </p>
+    
+    <p>
+      <strong> (ngSubmit) = "onSubmit()"</strong> : <code>ngSubmit</code> is an
+      Angular directive that fires anytime a button of type <i>submit</i> is
+      clicked. In this example, on submitting the form, onSubmit() method gets
+      invoked.
+    </p>
+    
+    <p>
+      <strong> [(ngModel)] = "classVariable"</strong>: Binds the data entered in the
+      input field of the form to the class variable specified in the corresponding
+      .ts file
+    </p>
+    
+    <p>
+      <strong> #variable = "ngModel"</strong>: Another template variable which is
+      bound to an instance of ngModel. This helps to track the state of the input
+      field by checking if the user touched the control, if the value changed, or if
+      the value became invalid.
+    </p>
+  </div>
+</div>
 
-<br />
-
-<p>
-  In Angular, <b>ngForm</b> is a <em>directive</em> used in a form tag to obtain
-</p>
-
-<ul>
-  <li>The values of the various form fields in that respective form</li>
-  <li>
-    Information about the <em>state</em> of a form (i.e., whether it is valid,
-    invalid, etc.)
-  </li>
-</ul>
-
-<br />
-
-<p>
-  <strong>FormsModule</strong> from
-  <strong><code>@angular/forms</code></strong> must be imported in the
-  <b>AppsModule</b> (or whatever module the form's encompassing component is
-  found in) and added to the <b>imports:[]</b> array so that it can be used
-  throughout the components of the application.
-</p>
-
-<p>
-  <strong>ngModel</strong>: Provides two-way data binding between the view and
-  component. It is also used to track the state and validity of the input field.
-</p>
-
-<p>
-  <strong>ngSubmit</strong>: Fires an event specified by ngSubmit when the form
-  is submitted
-</p>
-
-<p>
-  <strong>#formRef="ngForm" </strong>is a template variable that has an instance
-  of ngForm or Angular from. <code>#formRef</code> is thus an
-  <code>ngForm</code> directive instance whcih represents the entire form
-</p>
-
-<p>
-  <strong> (ngSubmit) = "onSubmit()"</strong> : <code>ngSubmit</code> is an
-  Angular directive that fires anytime a button of type <i>submit</i> is
-  clicked. In this example, on submitting the form, onSubmit() method gets
-  invoked.
-</p>
-
-<p>
-  <strong> [(ngModel)] = "classVariable"</strong>: Binds the data entered in the
-  input field of the form to the class variable specified in the corresponding
-  .ts file
-</p>
-
-<p>
-  <strong> #variable = "ngModel"</strong>: Another template variable which is
-  bound to an instance of ngModel. This helps to track the state of the input
-  field by checking if the user touched the control, if the value changed, or if
-  the value became invalid.
-</p>
+</div>

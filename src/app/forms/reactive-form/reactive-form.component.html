@@ -15,74 +15,88 @@
   <code>imports:[]</code> field of <code><b>@NgModule</b></code>
 </p>
 
-<div class="form-formatter">
-
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
-    <div class="form-group">
-      <label class="label-text-black">First Name</label>
-      <input type="text" class="form-control" formControlName="firstName" />
-      <div
-      *ngIf="registerForm.controls.firstName.hasError('required') && registerForm.controls.firstName.dirty"
-      class="alert alert-danger"
-      >
-      This is a required field
+<!-- <div class="form-formatter"> -->
+<div class="container">
+  <div class="row align-items-center">
+    <div class=" col-sm-6">
+      <pre><code [highlight]="formComponent" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript"></code></pre>
+    </div>
+    <div class=" col-sm-6">
+      something something components something something components something something components something something
+      components something something components something something components something something components something
+      something components
     </div>
   </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input type="text" class="form-control" formControlName="lastName" />
-    <p *ngIf="registerForm.controls.lastName.hasError('required') && registerForm.controls.lastName.dirty" class="alert alert-danger">
-      This field is required!
+  <div class="row align-items-center">
+    <div class="col-sm-6">
+
+
+      <pre><code [highlight]="formTemplate" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-html"></code></pre>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="form-group">
+          <label class="label-text-black">First Name</label>
+          <input type="text" class="form-control" formControlName="firstName" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="form-control" formControlName="lastName" />
+        </div>
+        <div class="form-group fieldset-group">
+          <fieldset formGroupName="address">
+            <div class="form-control">
+              <label>Street</label>
+              <input type="text" class="form-control" formControlName="street" />
+            </div>
+            <div class="form-control">
+              <label>Zip</label>
+              <input type="text" class="form-control" formControlName="zip" />
+            </div>
+            <div class="form-control">
+              <label>City</label>
+              <input type="text" class="form-control" formControlName="city" />
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Angular CSS Directives to be written in ./reactive-form.component.css -->
+
+      <!-- .ng-valid[required]  {
+        border-left: 5px solid #42A948; /* green */
+      }
+      .ng-invalid:not(form)  {
+        border-left: 5px solid #a94442; /* red */
+      }
+    -->
+      <div *ngIf="showSubmitResults && registerForm.untouched">
+        this div will appear when submit button is hit.
+        <ul>
+          <li>
+            it must disapear when the form is touched again
+          </li>
+          <li>
+            the values submitted through the form must be stored somewhere/how in the component (in a model class of
+            sorts
+            yet to be created) or else they will not appear as the form's values are reset on submission.
+          </li>
+        </ul>
+      </div>
+    </div>
+  <div class=" col-sm-6">
+
+    <p>
+      formGroup is a directive that binds HTML form with the FormGroup property created inside a component class. We
+      have
+      created a FormGroup in component with name registerForm. Here form tag is binded with FormGroup registerForm
+    </p>
+
+    <p>
+      Two input fields for first name and last name are binded with the form controls created in the component using
+      the
+      formControlName directive
     </p>
   </div>
-  <div class="form-group fieldset-group">
-    <fieldset formGroupName="address">
-      <div class="form-control">
-        <label>Street</label>
-        <input type="text" class="form-control" formControlName="street" />
-      </div>
-      <div class="form-control">
-        <label>Zip</label>
-        <input type="text" class="form-control" formControlName="zip" />
-      </div>
-      <div class="form-control">
-        <label>City</label>
-        <input type="text" class="form-control" formControlName="city" />
-      </div>
-    </fieldset>
-  </div>
-  
-  <button type="submit">Submit</button>
-</form>
 </div>
-
-<!-- Angular CSS Directives to be written in ./reactive-form.component.css -->
-
-<!-- .ng-valid[required]  {
-  border-left: 5px solid #42A948; /* green */
-}
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
--->
-<div *ngIf="showSubmitResults && registerForm.untouched">
-  this div will appear when submit button is hit. 
-  <ul>
-    <li>
-      it must disapear when the form is touched again 
-    </li>
-    <li>
-      the values submitted through the form must be stored somewhere/how in the component (in a model class of sorts yet to be created) or else they will not appear as the form's values are reset on submission. 
-    </li>
-  </ul>
 </div>
-
-<br/>
-
-<p>
-  formGroup is a directive that binds HTML form with the FormGroup property created inside a component class. We have created a FormGroup in component with name registerForm. Here form tag is binded with FormGroup registerForm
-</p>
-
-<p>
-    Two input fields for first name and last name are binded with the form controls created in the component using the formControlName directive
-</p>

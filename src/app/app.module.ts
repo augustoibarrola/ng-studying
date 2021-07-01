@@ -20,6 +20,8 @@ import { PipesComponent } from './pipes/pipes.component';
 import { ServicesComponent } from './services/services.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
+
 
 @NgModule({
   declarations: [
@@ -45,8 +47,7 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HighlightModule, 
-
+    HighlightModule,
   ],
   providers: [
     {
