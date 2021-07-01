@@ -1,54 +1,70 @@
-<h3>Form Validations</h3>
+<div class="container">
 
-<p>validations works!</p>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label>First Name</label>
-    <input type="text" class="form-control" formControlName="firstName" />
-    <p
-      *ngIf="registerForm.controls.firstName.errors"
-      class="alert alert-danger"
-    >
-      This is a required field
-    </p>
-  </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input type="text" class="form-control" formControlName="lastName" />
-    <p *ngIf="registerForm.controls.lastName.errors" class="alert alert-danger">
-      This field is required!
-    </p>
-  </div>
-  <div class="form-group">
-    <fieldset formGroupName="address">
-      <div class="form-control">
-        <label>Street</label>
-        <input type="text" class="form-control" formControlName="street" />
+  <div class="row">
+    <legend><h3>Form Validations</h3></legend>
+<!-- TODO intro into validations -->
+
+Custom <strong><code>Validators</code></strong> must be placed in the <code>imports:[]</code> attribute of the corresponding <code>NgModule</code> class. 
+  </div >
+
+  <div class="row align-items-center">
+<div class="col-sm-6">
+
+    <!--TODO INSERT CODE SNIPPET HERE  -->
+    <pre><code [highlight]="formTemplate" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript"></code></pre>
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+      <div class="form-group">
+        <label class="label-text-black">First Name</label>
+        <input required type="text" class="form-control" formControlName="firstName" />
       </div>
-      <div class="form-control">
-        <label>Zip</label>
-        <input type="text" class="form-control" formControlName="zip" />
+      <div class="form-group">
+        <label>Last Name</label>
+        <input required type="text" class="form-control" formControlName="lastName" />
       </div>
-      <div class="form-control">
-        <label>City</label>
-        <input type="text" class="form-control" formControlName="city" />
+      <div class="form-group">
+        <fieldset class="fieldset-group" formGroupName="address">
+          <div>
+            <label>Street</label>
+            <input type="text" class="form-control" formControlName="street" />
+          </div>
+          <div>
+            <label>Zip</label>
+            <input type="text" class="form-control" formControlName="zip" />
+          </div>
+          <div>
+            <label>City</label>
+            <input type="text" class="form-control" formControlName="city" />
+          </div>
+        </fieldset>
       </div>
-    </fieldset>
-    <!-- EMAIL VALIDATION EXAMPLE -->
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" formControlName="email" />
-      <p
-        *ngIf="registerForm.controls.email.errors.emailError"
-        class="alert alert-danger"
-      >
-        {{ registerForm.controls.email.errors.emailError.message }}
-      </p>
-    </div>
-    <!-- END -->
-  </div>
-  <button type="submit">Submit</button>
-</form>
+      <button type="submit" [disabled]="registerForm.invalid">Submit</button>
+    </form>
+  </div >
+<div class="col-sm-6">
+  explanation on code explanation on code explanation on code explanation on code explanation on code explanation on code explanation on code explanation on codeexplanation on code explanation on code explanation on code explanation on code explanation on code explanation on code explanation on code explanation on code
+</div>
+  </div >
+
+
+
+
+
+</div>
+
+<!-- EMAIL VALIDATION EXAMPLE -->
+<!-- <div class="form-group">
+  <label>Email</label>
+  <input type="text" class="form-control" formControlName="email" />
+  <p
+    *ngIf="registerForm.controls.email.errors.emailError"
+    class="alert alert-danger"
+  >
+    {{ registerForm.controls.email.errors.emailError.message }}
+  </p>
+</div> -->
+<!-- END -->
+
 <!-- <div [hidden]="!submitted">
     <h3> Employee Details </h3>
     <p>First Name: {{ registerForm.get('firstName').value }} </p>

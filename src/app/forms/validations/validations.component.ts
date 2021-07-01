@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { HighlightResult } from 'ngx-highlightjs';
 
 @Component({
   selector: 'validations-template',
@@ -9,19 +10,90 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class ValidationsComponent implements OnInit {
 
   registerForm:FormGroup;
+  response: HighlightResult;
+  formModuleImports=`import { ReactiveFormsModule } from '@angular/forms';
+
+  @NgModule({
+    declarations: [
+      ReactiveFormComponent,
+      CustomValidator
+    ],
+    imports: [
+      ReactiveFormsModule,
+    ],
+    providers: [],
+    bootstrap: []
+  })
+  export class AppModule { }
+  `;
+  formComponent=  `
+  import { OnInit } from '@angular/core';
+  import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+
+  export class ReactiveFormValidatorsComponent implements OnInit {
+
+    registerForm: FormGroup;
+    
+    constructor(private formBuilder: FormBuilder) { }
+
+    ngOnInit(){
+      this.registerForm = this.formBuilder.group({
+        firstName: ['', [Validators.required]], 
+        lastName: ['', [Validators.required]], 
+        address: this.formBuilder.group({
+          street: [], 
+          zip: [], 
+          city: []
+        })
+      })
+    }
+  
+    onSubmit(): void {
+      //some function to be executed on submit event
+    }
+  }
+  `;
+  formTemplate = `
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label> First Name </label>
+          <input type="text"/>
+        </div>
+        <div>
+          <label> Last Name </label>
+          <input type="text"/>
+        </div>
+        <div>
+          <fieldset>
+            <div>
+              <label>Street</label>
+              <input type="address"/>
+            </div>
+            <div>
+              <label>Zip</label>
+              <input type="text"/>
+            </div>
+            <div>
+              <label>City</label>
+              <input type="text"/>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit"> Submit </button>
+      </form>
+  `;
 
   constructor(private formBuilder: FormBuilder){}
 
   ngOnInit(){
     this.registerForm = this.formBuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       address: this.formBuilder.group({
         street:[],
         zip:[],
         city:[]
-      }),
-      email:["", this.validateEmail] 
+      })
     });
   }
 
@@ -45,8 +117,19 @@ export class ValidationsComponent implements OnInit {
   }
 
   
-  onSubmit(){
+  onSubmit(form: FormGroup){
     console.log("Submit button clicked");
+    this.registerForm.reset();
+  }
+
+  onHighlight(event) {
+    this.response = {
+      language: event.language,
+      relevance: event.relevance,
+      second_best: '{...}',
+      top: '{...}',
+      value: '{...}'
+    }
   }
 
 

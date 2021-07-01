@@ -26,13 +26,13 @@ export class ReactiveFormComponent {
   })
   export class AppModule { }
   `;
-  formComponent=  `import { FormBuilder, FormGroup } from '@angular/forms';
+  formComponent=  `import { FormGroup } from '@angular/forms';
 
   export class ReactiveFormComponent {
 
     registerForm: FormGroup;
     
-    constructor(private formBuilder: FormBuilder) { }
+    constructor() { }
   
     onSubmit(): void {
       //some function to be executed on submit event
