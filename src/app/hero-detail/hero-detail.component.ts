@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router'; //https://angular.io/api/route
 import { Location } from '@angular/common'; //https://angular.io/api/common/Location
 import { Hero } from '../hero';
 import{ HeroService } from '../services/hero-service/hero.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
 
 
 @Component({
@@ -17,11 +19,21 @@ export class HeroDetailComponent implements OnInit {
    * 
    * https://angular.io/api/core/Input
   */
+ submittedHero:Hero;
+  heroForm:FormGroup;
 
- constructor(private route: ActivatedRoute, private heroService: HeroService, private location:Location) { }
+
+ constructor(private route: ActivatedRoute, private heroService: HeroService, private location:Location, private formBuilder:FormBuilder) { }
  
  ngOnInit(): void {
    this.getHero();
+  console.log(this.hero)
+   this.heroForm = this.formBuilder.group({
+     controlHeroName:['',[Validators.required]],
+     controlAlias:['',[Validators.required]],
+     controlSuperpower:['',[Validators.required]],
+     controlWeakness:['',[Validators.required]],
+   })
   }
   
   @Output() outputMsg = new EventEmitter<Hero>(); 
@@ -49,6 +61,15 @@ export class HeroDetailComponent implements OnInit {
      */
   }
 
+  onSubmit(heroForm:FormGroup){
+    // this.heroForm.reset();
+this.submittedHero.name = heroForm.value.controlHeroName;
+this.submittedHero.alias = heroForm.value.controlAlias;
+this.submittedHero.superpower = heroForm.value.controlSuperpower;
+this.submittedHero.weakness = heroForm.value.controlWeakness;
+console.log(this.submittedHero);
+    this.heroService.postHero(this.submittedHero);
+  }
 }
 
 

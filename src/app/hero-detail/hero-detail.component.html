@@ -6,21 +6,24 @@
 -->
 <div *ngIf="hero">
     <h2>{{ hero.name | uppercase }} Details </h2>
-    <div>
-        <span>Id: </span> {{hero.id}}
-    </div>
-    <div>
-        <label for="hero-name"> Hero Name: </label>
-        <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero Name">
-    </div>
-    <div>
-        <label for="hero-counter"> Counter: </label>
-        <input id="hero-counter" placeholder={{hero.counter}} disabled>
-    </div>
-</div>
-<div>
-    <button (click)="goBack()"> Go Back </button>
-</div>
-<div>
-    <button (click)="outputMsgTrigger(hero)"> Increase Counter </button>
+
+<form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
+    <div class="form-group">
+            <label for="heroName"> Hero Name </label>
+            <input required readonly type="text" id="heroName" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}"/>
+    </div >
+    <div class="form-group">
+        <label for="alias"> Alias </label>
+        <input type="text" id="alias" class="form-control" formControlName="controlAlias">
+    </div >
+    <div class="form-group">
+        <label for="superpower"> Super Power </label>
+        <input type="type" id="superpower" class="form-control" formControlName="controlSuperpower">
+    </div >
+    <div class="form-group">
+        <label for="weakness"> Weakness </label>
+        <input type="type" id="weakness" class="form-control" formControlName="controlWeakness">
+    </div >
+    <button class="btn btn-success" type="submit"> Submit </button>
+</form>
 </div>

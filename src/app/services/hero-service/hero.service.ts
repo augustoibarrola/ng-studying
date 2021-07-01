@@ -42,7 +42,7 @@ export class HeroService {
      * meaning their return type must be an Observable<> of some given type. 
      */
     
-    const heroesMockUrl:string='assets/heroes.json';
+    const heroesMockUrl:string="http://localhost:3000/heroes";
     return this.http.get<Hero[]>(heroesMockUrl);
   }
 
@@ -59,6 +59,11 @@ export class HeroService {
   incrementCount(hero:Hero):void{
     const foundHero = HEROES.find(fHero => fHero.id == hero.id);
     foundHero.counter += foundHero.counter;
+  }
+  
+  postHero(hero:Hero){
+
+    this.http.post("http://localhost:3000/heroes", hero);
   }
 
 }
