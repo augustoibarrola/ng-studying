@@ -4,3 +4,4 @@
 - [ ] remove disabled anchors for reactive/template forms
 - [ ] STUDY: https://angular.io/api/forms/AbstractControl
     - [ ] Build out notes on above as a child of `forms.component.html`
+- [ ] add functionality to show form codes simplified or with full bootstrap styling in code snippets  

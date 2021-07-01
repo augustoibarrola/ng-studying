@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-    <h3>Reactive Forms</h3>
+    <legend><h3>Reactive Forms</h3></legend>
     <div>
 
       Reactive Forms (also called <i>Model Drive Forms</i>) are best suited for <em>Large</em> forms (i.e., forms with
@@ -17,9 +17,12 @@
       Forms within the component class.
       <br>
       <br>
+      <strong><code>FormGroup</code></strong>, also from <b><code>`@angular/forms`</code></b>, is used to name and represent the form and its values inside the component class by treating it as a <code>FormGroup</code> instance.
+      <br>
+      <br>
       <strong><code>ReactiveFormsModule</code></strong> from <b><code>`@angular/forms`</code></b>must be imported in the
       corresponding <b>module</b> of the form's component and then placed inside the
-      <code>imports:[]</code> field of <code><b>@NgModule</b></code> in order to use Reactive Forms in Angular.
+      <code>imports:[]</code> field of <code><b>@NgModule</b></code> in order to use Reactive Forms in Angular. <code>ReactiveFormsModule</code> replaces <code>FormsModule</code> when creating reactive forms. 
 
     </div>
 
@@ -33,7 +36,7 @@
     </div>
     <div class="col-sm-6">
       <!-- explanation -->
-      
+
     </div>
   </div>
 
@@ -65,17 +68,17 @@
           <label>Last Name</label>
           <input type="text" class="form-control" formControlName="lastName" />
         </div>
-        <div class="form-group fieldset-group">
-          <fieldset formGroupName="address">
-            <div class="form-control">
+        <div class="form-group">
+          <fieldset class="fieldset-group" formGroupName="address">
+            <div>
               <label>Street</label>
               <input type="text" class="form-control" formControlName="street" />
             </div>
-            <div class="form-control">
+            <div>
               <label>Zip</label>
               <input type="text" class="form-control" formControlName="zip" />
             </div>
-            <div class="form-control">
+            <div>
               <label>City</label>
               <input type="text" class="form-control" formControlName="city" />
             </div>
@@ -100,11 +103,16 @@
 
     <div class=" col-sm-6">
 
-        <strong><code>[formGroup]="registerForm"</code></strong> is a directive that binds the HTML form tag with the <code>FormGroup</code> property created in the component class (i.e., <code>registerForm: FormGroup</code>). This connects the form and all it's children values to the property in the template's corresponding component class. 
-<br>
-<br>
+      <strong><code>[formGroup]="registerForm"</code></strong> is a directive that binds the HTML form tag with the
+      <code>FormGroup</code> property created in the component class (i.e., <code>registerForm: FormGroup</code>). This
+      connects the form and all it's children values to the property in the template's corresponding component class.
+      <br>
+      <br>
 
-When a submit button is clicked in a reactive form, the form is submitted through its <code>ngSubmit</code> directive, initializing the form's <i>submitted</i> proeprty to <code>true</code>. Hence, <strong><code>(ngSubmit)="onSubmit()"</code></strong>, indicating on that, upon submission, the <code>onSubmit()</code> function within the component class will be executed.
+      When a submit button is clicked in a reactive form, the form is submitted through its <code>ngSubmit</code>
+      directive, initializing the form's <i>submitted</i> proeprty to <code>true</code>. Hence,
+      <strong><code>(ngSubmit)="onSubmit()"</code></strong>, indicating on that, upon submission, the
+      <code>onSubmit()</code> function within the component class will be executed.
 
     </div>
 

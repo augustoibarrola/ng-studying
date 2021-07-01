@@ -41,40 +41,32 @@ export class ReactiveFormComponent {
   `;
   formTemplate = `
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label class="label-text-black">First Name</label>
-    <input type="text" class="form-control" formControlName="firstName" />
-    <div *ngIf="registerForm.controls.firstName.hasError('required') && registerForm.controls.firstName.dirty"
-      class="alert alert-danger">
-      This is a required field
-    </div>
-  </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input type="text" class="form-control" formControlName="lastName" />
-    <p *ngIf="registerForm.controls.lastName.hasError('required') && registerForm.controls.lastName.dirty"
-      class="alert alert-danger">
-      This field is required!
-    </p>
-  </div>
-  <div class="form-group fieldset-group">
-    <fieldset formGroupName="address">
-      <div class="form-control">
-        <label>Street</label>
-        <input type="text" class="form-control" formControlName="street" />
-      </div>
-      <div class="form-control">
-        <label>Zip</label>
-        <input type="text" class="form-control" formControlName="zip" />
-      </div>
-      <div class="form-control">
-        <label>City</label>
-        <input type="text" class="form-control" formControlName="city" />
-      </div>
-    </fieldset>
-  </div>
-  <button type="submit">Submit</button>
-</form>
+        <div>
+          <label> First Name </label>
+          <input type="text"/>
+        </div>
+        <div>
+          <label> Last Name </label>
+          <input type="text"/>
+        </div>
+        <div>
+          <fieldset>
+            <div>
+              <label>Street</label>
+              <input type="address"/>
+            </div>
+            <div>
+              <label>Zip</label>
+              <input type="text"/>
+            </div>
+            <div>
+              <label>City</label>
+              <input type="text"/>
+            </div>
+          </fieldset>
+        </div>
+        <button type="submit"> Submit </button>
+      </form>
   `;
 
   constructor(private formBuilder: FormBuilder) { }
