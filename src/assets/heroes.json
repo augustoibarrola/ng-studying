@@ -1,26 +1,44 @@
 [
     {   "id": 11, 
-        "name": "Wolverine", 
+        "name": "Wolverine",
+        "alias": "",
+        "superpower":"",
+        "weakness":"",
         "counter": 0 
     },
     {   "id": 12,
-        "name": "Magneto", 
+        "name": "Magneto",
+        "alias":"", 
+        "superpower":"",
+        "weakness":"",
         "counter": 0 
     },
     {   "id": 13, 
-        "name": "Mr.Incredible", 
+        "name": "Mr.Incredible",
+        "alias":"", 
+        "superpower":"",
+        "weakness":"",
         "counter": 0 
     },
     {   "id": 14,
-        "name": "Hercules", 
+        "name": "Hercules",
+        "alias":"", 
+        "superpower":"",
+        "weakness":"",
         "counter": 0 
     },
     {   "id": 15, 
-        "name": "Invincible", 
+        "name": "Invincible",
+        "alias":"", 
+        "superpower":"",
+        "weakness":"",
         "counter": 0 
     },
     {   "id": 16, 
-        "name": "Spider Man", 
+        "name": "Spider Man",
+        "alias":"", 
+        "superpower":"",
+        "weakness":"",
         "counter": 0 
     }
 ]
