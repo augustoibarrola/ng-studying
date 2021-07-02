@@ -1,13 +1,32 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="/"> Home </a>
-    <a routerLink="/heroes"> Heroes </a>
-    <a routerLink="/dashboard"> Dashboard </a>
-    <a routerLink="/directives"> Directives </a>
-    <a routerLink="/pipes">Pipes</a>
-    <a routerLink="/services">Services</a>
-    <a routerLink="/forms">Forms</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="navbar-brand">{{title}}</div>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/"> Home </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/heroes"> Heroes </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard"> Dashboard </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/directives"> Directives </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/pipes">Pipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forms">Forms</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>
 <app-messages></app-messages>
 
