@@ -11,6 +11,8 @@ export class ValidationsComponent implements OnInit {
 
   registerForm:FormGroup;
   response: HighlightResult;
+  showControlStateTable:Boolean;
+  reactiveFormValidations:Boolean;
   formModuleImports=`import { ReactiveFormsModule } from '@angular/forms';
 
   @NgModule({
@@ -86,6 +88,8 @@ export class ValidationsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder){}
 
   ngOnInit(){
+    this.showControlStateTable=false;
+    this.reactiveFormValidations=false;
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],

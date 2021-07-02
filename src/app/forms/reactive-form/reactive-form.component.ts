@@ -11,6 +11,7 @@ export class ReactiveFormComponent {
 
   registerForm: FormGroup;
   showSubmitResults: Boolean;
+  reactiveFormValidations:Boolean;
   response: HighlightResult;
   formModuleImports=`import { ReactiveFormsModule } from '@angular/forms';
 
@@ -26,7 +27,7 @@ export class ReactiveFormComponent {
   })
   export class AppModule { }
   `;
-  formComponent=  `import { FormGroup } from '@angular/forms';
+  formComponent=`import { FormGroup } from '@angular/forms';
 
   export class ReactiveFormComponent {
 

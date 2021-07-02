@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <legend>
       <h3>Form Validations</h3>
@@ -17,7 +16,70 @@
       in the input fields that are actually existant on the <code>DOM</code>. -->
 
     </div>
+    <div *ngIf="showControlStateTable">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Keyword</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><code>valid</code></th>
+            <td>
+              checks if a control is <code>valid</code>
+            </td>
+           
+          </tr>
+          <tr>
+            <th scope="row"><code>invalid</code></th>
+            <td>
+              checks if a control is <code>invalid</code>
+            </td>
+           
+          </tr>
+          <tr>
+            <th scope="row"><code>dirty</code></th>
+            <td>
+              checks if a control's value is changed
+            </td>
+            
+          </tr>
+          <tr>
+            <th scope="row"><code>pristine</code></th>
+            <td>
+              checks if a control's value has remain unchanged
+            </td>
+           
+          </tr>
+          <tr>
+            <th scope="row"><code>touched</code></th>
+            <td>
+              <code>true</code> if a control is touched
+            </td>
+           
+          </tr>
+          <tr>
+            <th scope="row"><code>untouched</code></th>
+            <td>
+              <code>true</code> if a control is not touched
+            </td>
+           
+          </tr>
+          <tr>
+            <th scope="row"><code>untouched</code></th>
+            <td>
+              <code>true</code> if a control is not touched
+            </td>
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
+<div *ngIf="reactiveFormValidations">
 
   <div class="row align-items-center">
     <div class="col-sm-6">
@@ -59,5 +121,6 @@
       explanation on code explanation on code explanation on code explanation on code explanation on code
     </div>
   </div>
+</div>
 
 </div>
