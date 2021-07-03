@@ -1,21 +1,36 @@
-<h2>Forms</h2>
+<div class="container">
+<div class="row">
+    <div class="col-sm">
+        <h2>Forms</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link active" (click)="showTemplateFormBtn()">Template Forms</a></li>
+            <li class="nav-item" ><a class="nav-link" (click)="showReactiveFormBtn()">Reactive Forms</a></li>
+            <li class="nav-item" ><a class="nav-link" (click)="showValidationsBtn()">Form Validations</a></li>
+        </ul>
 
-Click below for a topic
+    </div>
+    <div class="col-sm">
+        <div *ngIf="showTemplateForm">
+            <template-form></template-form>
+        </div>
+        
+        <div *ngIf="showReactiveForm">
+            <reactive-form></reactive-form>
+        </div>
+        
+        <div *ngIf="showValidations">
+            <validations-template></validations-template>
+        </div>
 
-<br>
+    </div>
+</div >
 
-<button (click)="showTemplateFormBtn()">Template Forms</button>
+<!-- <button (click)="showTemplateFormBtn()">Template Forms</button>
 <button (click)="showReactiveFormBtn()">Reactive Forms</button>
-<button (click)="showValidationsBtn()">Form Validations</button>
+<button (click)="showValidationsBtn()">Form Validations</button> -->
 
-<div *ngIf="showTemplateForm">
-    <template-form></template-form>
-</div>
-
-<div *ngIf="showReactiveForm">
-    <reactive-form></reactive-form>
-</div>
-
-<div *ngIf="showValidations">
-    <validations-template></validations-template>
-</div>
+</div >

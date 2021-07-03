@@ -15,7 +15,7 @@ export class FormsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.showTemplateForm = false;
+    this.showTemplateForm = true;
     this.showReactiveForm = false;
     this.showValidations = false;
   }
