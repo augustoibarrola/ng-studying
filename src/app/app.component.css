@@ -1,1 +1,5 @@
 /* AppComponent's private CSS styles */
+.main-app-body{
+    padding-top: 6%;
+    padding: 6% 1.8% 0.5% 1.8%
+}

@@ -1,34 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="navbar-brand">{{title}}</div>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/"> Home </a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/heroes"> Heroes </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard"> Dashboard </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/directives"> Directives </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/pipes">Pipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/services">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/forms">Forms</a>
-      </li>
-    </ul>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+
+    <div class="navbar-brand mb-0 h1">{{title}}</div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/"> Home </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/heroes"> Heroes </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard"> Dashboard </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/directives"> Directives </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/pipes">Pipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/forms">Forms</a>
+        </li>
+      </ul>
+      <!-- <ol class="breadcrumb">
+        <li class="breadcrumb-item nav-item"><a class="nav-link" routerLink="/forms">Forms</a></li>
+        <li class="breadcrumb-item nav-item"><a class="nav-link" routerLink="/template-form">Template Forms</a></li>
+        <li class="breadcrumb-item nav-item" aria-current="page"><a class="nav-link" routerLink="/reactive-form">Reactive Forms</a></li>
+      </ol> -->
+    </div>
   </div>
 </nav>
-
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<div class="main-app-body">
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+</div>
 
 
 <!-- 
