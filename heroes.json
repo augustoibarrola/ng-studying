@@ -4,19 +4,19 @@
       "id": 11,
       "imageSrc": "assets/hero-images/wolverine.jpeg",
       "name": "Wolverine",
-      "alias": "",
-      "superpower": "",
-      "weakness": "",
-      "description": ""
+      "alias": "gbvfecd",
+      "superpower": "rvfecdwxs",
+      "weakness": "rvfecwd",
+      "description": "rgvfedw"
     },
     {
       "id": 12,
       "imageSrc": "assets/hero-images/magneto.jpg",
       "name": "Magneto",
-      "alias": "",
-      "superpower": "",
-      "weakness": "",
-      "description": ""
+      "alias": "TEST",
+      "superpower": "TESTTEST",
+      "weakness": "TESTTEST",
+      "description": "TESTTEST"
     },
     {
       "id": 13,
@@ -38,7 +38,7 @@
     },
     {
       "id": 15,
-      "imageSrc": "assets/hero-images/Invincble.jpeg",
+      "imageSrc": "assets/hero-images/Invincible.jpeg",
       "name": "Invincible",
       "alias": "",
       "superpower": "",
@@ -88,6 +88,33 @@
       "alias": "",
       "superpower": "",
       "weakness": "",
+      "description": ""
+    },
+    {
+      "id": 21,
+      "imageSrc": "",
+      "name": "",
+      "alias": "evfcdw",
+      "superpower": "vfecdsx",
+      "weakness": "fvecdxs",
+      "description": ""
+    },
+    {
+      "id": 22,
+      "imageSrc": "",
+      "name": "",
+      "alias": "t gbrvfecdwxs",
+      "superpower": "rgfvecdwsx",
+      "weakness": "g rfvecdwxs",
+      "description": ""
+    },
+    {
+      "id": 23,
+      "imageSrc": "",
+      "name": "",
+      "alias": "t gbrvfecdwxs",
+      "superpower": "rgfvecdwsx",
+      "weakness": "g rfvecdwxs",
       "description": ""
     }
   ]

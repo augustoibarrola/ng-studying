@@ -32,7 +32,7 @@ export class HeroService {
   constructor(private messageService:MessageService, private http: HttpClient) { }
 
   heroesList:Hero[];
-  createdHero?:Hero;
+  // createdHero?:Hero;
   heroesURL:string="http://localhost:3000/heroes";
 
   
@@ -53,8 +53,8 @@ export class HeroService {
   }
 
   getHero(id: number):Hero{
-    this.messageService.add(`HeroService: Fetched hero id = ${id}`);
     for(let hero of this.heroesList){
+      this.messageService.add(`HeroService: Fetched hero id = ${id}`);
       if (hero.id == id){
         return hero;
       }
@@ -72,8 +72,10 @@ export class HeroService {
   }
 
   createHero(hero:FormGroup){
-console.log(hero)
-  console.log(this.createdHero)
+    let newHero = new Hero();
+console.log(hero.value)
+newHero.alias = hero.value.controlAlias;
+  console.log(newHero)
     // return hero;
   }
   
@@ -82,6 +84,13 @@ console.log(hero)
 const headers = {'content-type': 'application/json'}
 const heroJSON = JSON.stringify(hero);  
     return this.http.post("http://localhost:3000/heroes", heroJSON, {'headers':headers});
+  }
+
+  updateHero(hero: Hero) {
+    console.log(hero)
+    const headers = { 'content-type': 'application/json' }
+    const heroJSON = JSON.stringify(hero);
+    return this.http.put<Hero>(`http://localhost:3000/heroes/${hero.id}`, heroJSON, { 'headers': headers });
   }
 
 }

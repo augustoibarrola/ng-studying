@@ -1,6 +1,6 @@
 // https://angular.io/tutorial/toh-pt1#create-a-hero-interface
 
-export interface Hero {
+export class Hero {
   id: number;
   imageSrc:string;
   name: string;

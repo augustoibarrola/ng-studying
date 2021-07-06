@@ -9,20 +9,24 @@
 <img src="{{hero.imageSrc}}">
 <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
     <div class="form-group">
-            <label for="heroName"> Hero Name </label>
-            <input required type="text" id="heroName" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" value="{{hero.name}}" [(ngModel)}]="heroName"/>
+            <label for="heroNameId"> Hero Name </label>
+            <input required type="text" name="heroName" id="heroNameId" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" />
     </div >
     <div class="form-group">
         <label for="alias"> Alias </label>
-        <input type="text" id="alias" class="form-control" formControlName="controlAlias">
+        <input required type="text" id="alias" class="form-control" formControlName="controlAlias" placeholder="{{hero.alias}}" >
     </div >
     <div class="form-group">
         <label for="superpower"> Super Power </label>
-        <input type="type" id="superpower" class="form-control" formControlName="controlSuperpower">
+        <input required type="type" id="superpower" class="form-control" formControlName="controlSuperpower" placeholder="{{hero.superpower}}">
     </div >
     <div class="form-group">
         <label for="weakness"> Weakness </label>
-        <input type="type" id="weakness" class="form-control" formControlName="controlWeakness">
+        <input required type="type" id="weakness" class="form-control" formControlName="controlWeakness" placeholder="{{hero.weakness}}">
+    </div >
+    <div class="form-group">
+        <label for="description"> Description </label>
+        <input required type="type" id="description" class="form-control" formControlName="controlDescription" placeholder="{{hero.description}}">
     </div >
     <button class="btn btn-success" type="submit"> Submit </button>
 </form>

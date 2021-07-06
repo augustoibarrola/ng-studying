@@ -21,6 +21,7 @@ import { ServicesComponent } from './services/services.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
+import { RouterComponent } from './router/router.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
     FormsComponent,
     PipesComponent,
     ServicesComponent,
+    RouterComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
     ReactiveFormsModule,
     HttpClientModule,
     HighlightModule,
+    // NgxGistModule
   ],
   providers: [
     {
