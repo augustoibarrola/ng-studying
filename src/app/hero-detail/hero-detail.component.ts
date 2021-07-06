@@ -66,16 +66,13 @@ export class HeroDetailComponent implements OnInit {
   }
 
   onSubmit(heroForm:FormGroup){
-let newHero = this.heroService.createHero(heroForm)
-// console.log(heroForm)
 this.submittedHero.id = this.hero.id;
-this.submittedHero.name = this.hero.name;
-this.submittedHero.imageSrc = this.hero.imageSrc;
-this.submittedHero.alias = heroForm.value.controlAlias;
-this.submittedHero.superpower = heroForm.value.controlSuperpower;
-this.submittedHero.weakness = heroForm.value.controlWeakness;
-this.submittedHero.description = heroForm.value.controlDescription;
-console.log(this.submittedHero)
+this.submittedHero.name = heroForm.value.controlHeroName == "" ? this.hero.name : heroForm.value.controlHeroName;
+this.submittedHero.imageSrc =  this.hero.imageSrc;
+this.submittedHero.alias = heroForm.value.controlAlias == "" ? this.hero.alias : heroForm.value.controlAlias;
+this.submittedHero.superpower = heroForm.value.controlSuperpower == "" ? this.hero.superpower : heroForm.value.controlSuperpower;
+this.submittedHero.weakness = heroForm.value.controlWeakness == "" ? this.hero.weakness : heroForm.value.controlWeakness;
+this.submittedHero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
 this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(hero));
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../../hero';
-import { HEROES } from '../../mock-heroes'; 
-import { HttpClient} from '@angular/common/http';
+import { HEROES } from '../../mock-heroes';
+import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message-service/message.service';
 import { Observable, of } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -29,33 +29,33 @@ import { HeroDetailComponent } from 'src/app/hero-detail/hero-detail.component';
 })
 export class HeroService {
 
-  constructor(private messageService:MessageService, private http: HttpClient) { }
+  constructor(private messageService: MessageService, private http: HttpClient) { }
 
-  heroesList:Hero[];
+  heroesList: Hero[];
   // createdHero?:Hero;
-  heroesURL:string="http://localhost:3000/heroes";
+  heroesURL: string = "http://localhost:3000/heroes";
 
-  
-  getHeroes():Observable<Object>{
+
+  getHeroes(): Observable<Object> {
     // const heroes = of(HEROES); // of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes
     const heroes = this.http.get(this.heroesURL);
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
-    
+
     /**
      * In real world applications, service class methods that make HTTP requests will often have to wait 
      * for a response to those requests, and thus must have an ASYNCHRONOUS SIGNATURE of some kind,
      * meaning their return type must be an Observable<> of some given type. 
      */
-    
-    const heroesMockUrl:string="http://localhost:3000/heroes";
+
+    const heroesMockUrl: string = "http://localhost:3000/heroes";
     return this.http.get<Hero[]>(heroesMockUrl);
   }
 
-  getHero(id: number):Hero{
-    for(let hero of this.heroesList){
+  getHero(id: number): Hero {
+    for (let hero of this.heroesList) {
       this.messageService.add(`HeroService: Fetched hero id = ${id}`);
-      if (hero.id == id){
+      if (hero.id == id) {
         return hero;
       }
     }
@@ -65,29 +65,19 @@ export class HeroService {
      * !
      * "Non-Null Assertion Operator"
      */
- }
-  incrementCount(hero:Hero):void{
+  }
+  incrementCount(hero: Hero): void {
     const foundHero = HEROES.find(fHero => fHero.id == hero.id);
     // foundHero.counter += foundHero.counter;
   }
 
-  createHero(hero:FormGroup){
-    let newHero = new Hero();
-console.log(hero.value)
-newHero.alias = hero.value.controlAlias;
-  console.log(newHero)
-    // return hero;
-  }
-  
-  postHero(hero:Hero){
-console.log(hero)
-const headers = {'content-type': 'application/json'}
-const heroJSON = JSON.stringify(hero);  
-    return this.http.post("http://localhost:3000/heroes", heroJSON, {'headers':headers});
+  postHero(hero: Hero) {
+    const headers = { 'content-type': 'application/json' }
+    const heroJSON = JSON.stringify(hero);
+    return this.http.post("http://localhost:3000/heroes", heroJSON, { 'headers': headers });
   }
 
   updateHero(hero: Hero) {
-    console.log(hero)
     const headers = { 'content-type': 'application/json' }
     const heroJSON = JSON.stringify(hero);
     return this.http.put<Hero>(`http://localhost:3000/heroes/${hero.id}`, heroJSON, { 'headers': headers });
