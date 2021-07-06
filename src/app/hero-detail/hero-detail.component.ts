@@ -28,14 +28,14 @@ export class HeroDetailComponent implements OnInit {
  
  ngOnInit(): void {
    this.getHero();
-   console.log(this.hero)
    this.heroForm = this.formBuilder.group({
      controlHeroName:['',[Validators.required]],
      controlAlias:['',[Validators.required]],
      controlSuperpower:['',[Validators.required]],
      controlWeakness:['',[Validators.required]],
    })
-   this.submittedHero={id: NaN, name:"", alias:"", superpower:"",weakness:"", counter:NaN};
+   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:""};
+   console.log(this.hero)
   }
   
   @Output() outputMsg = new EventEmitter<Hero>(); 
@@ -45,7 +45,7 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
-     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+     this.hero = this.heroService.getHero(id);
 
 
     /** route.snapshot => static image of the route information shortly after the component is created
@@ -64,15 +64,12 @@ export class HeroDetailComponent implements OnInit {
   }
 
   onSubmit(heroForm:FormGroup){
-console.log(heroForm.value)
 let newHero = this.heroService.createHero(heroForm)
-console.log(this.submittedHero)
 this.submittedHero.name = heroForm.value.controlHeroName;
 this.submittedHero.alias = heroForm.value.controlAlias;
 this.submittedHero.superpower = heroForm.value.controlSuperpower;
 this.submittedHero.weakness = heroForm.value.controlWeakness;
-console.log(this.submittedHero);
-    this.heroService.postHero(this.submittedHero).subscribe(hero => console.log(hero));
+this.heroService.postHero(this.submittedHero).subscribe(hero => console.log(hero));
   }
 }
 

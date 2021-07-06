@@ -44,10 +44,17 @@ export class HeroesComponent implements OnInit {
     //this.heroes = this.heroService.getHeroes();
     //this.heroService.getHeroes() returns Observable<Hero[]> whose .subscribe() method can then be envoked. 
     this.heroService.getHeroes().subscribe(heroes => {
-      this.heroes = heroes;
-      this.heroService.heroesList = heroes;
+    
+      // for(let hero of heroes){
+      //   this.heroes.push(hero);
+      // }
+      this.heroes = <Hero[]>heroes;
+      this.heroService.heroesList = this.heroes;
+      console.log(heroes)
+      console.log(this.heroes)
     }, 
     error => this.errorMessage = <any>error);
+    console.log(this.heroes)
   }
 
   heroCounterIncrease(hero:Hero):void{

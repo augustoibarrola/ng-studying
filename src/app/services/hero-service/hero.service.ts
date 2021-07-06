@@ -33,12 +33,14 @@ export class HeroService {
 
   heroesList:Hero[];
   createdHero?:Hero;
+  heroesURL:string="http://localhost:3000/heroes";
 
   
-  getHeroes():Observable<Hero[]>{
-    //const heroes = of(HEROES); // of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes
-    // this.messageService.add('HeroService: fetched heroes');
-    // return heroes;
+  getHeroes():Observable<Object>{
+    // const heroes = of(HEROES); // of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes
+    const heroes = this.http.get(this.heroesURL);
+    this.messageService.add('HeroService: fetched heroes');
+    return heroes;
     
     /**
      * In real world applications, service class methods that make HTTP requests will often have to wait 
@@ -50,19 +52,23 @@ export class HeroService {
     return this.http.get<Hero[]>(heroesMockUrl);
   }
 
-  getHero(id: number):Observable<Hero>{
-    const hero = HEROES.find(hero => hero.id === id)!;
+  getHero(id: number):Hero{
     this.messageService.add(`HeroService: Fetched hero id = ${id}`);
-    return of(hero); //returns a MOCK hero as an OBSERVABLE, using of() function. 
+    for(let hero of this.heroesList){
+      if (hero.id == id){
+        return hero;
+      }
+    }
+    // return of(hero); //returns a MOCK hero as an OBSERVABLE, using of() function. 
 
     /**
      * !
      * "Non-Null Assertion Operator"
      */
-  }
+ }
   incrementCount(hero:Hero):void{
     const foundHero = HEROES.find(fHero => fHero.id == hero.id);
-    foundHero.counter += foundHero.counter;
+    // foundHero.counter += foundHero.counter;
   }
 
   createHero(hero:FormGroup){

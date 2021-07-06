@@ -2,75 +2,93 @@
   "heroes": [
     {
       "id": 11,
+      "imageSrc": "assets/hero-images/wolverine.jpeg",
       "name": "Wolverine",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": 0
+      "description": ""
     },
     {
       "id": 12,
+      "imageSrc": "assets/hero-images/magneto.jpg",
       "name": "Magneto",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": 0
+      "description": ""
     },
     {
       "id": 13,
+      "imageSrc": "assets/hero-images/mrincredible.jpeg",
       "name": "Mr.Incredible",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": 0
+      "description": ""
     },
     {
       "id": 14,
+      "imageSrc": "assets/hero-images/hercules.jpeg",
       "name": "Hercules",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": 0
+      "description": ""
     },
     {
       "id": 15,
+      "imageSrc": "assets/hero-images/Invincble.jpeg",
       "name": "Invincible",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": 0
+      "description": ""
     },
     {
       "id": 16,
+      "imageSrc": "assets/hero-images/spiderman.jpeg",
       "name": "Spider Man",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": 0
+      "description": ""
     },
     {
       "id": 17,
+      "imageSrc": "",
       "name": "",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": null
+      "description": ""
     },
     {
       "id": 18,
+      "imageSrc": "",
       "name": "",
       "alias": "",
       "superpower": "",
       "weakness": "",
-      "counter": null
+      "description": ""
     },
     {
       "id": 19,
+      "imageSrc": "",
       "name": "",
       "alias": "fds",
       "superpower": "wefqd",
       "weakness": "qwefqd",
-      "counter": null
+      "description": ""
+    },
+    {
+      "id": 20,
+      "imageSrc": "",
+      "name": "",
+      "alias": "",
+      "superpower": "",
+      "weakness": "",
+      "description": ""
     }
   ]
 }
