@@ -4,6 +4,9 @@ import { HEROES } from '../../mock-heroes';
 import { HttpClient} from '@angular/common/http';
 import { MessageService } from '../message-service/message.service';
 import { Observable, of } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { HeroDetailComponent } from 'src/app/hero-detail/hero-detail.component';
+
 
 // @Injectable marks the class as one that participates in the dependency injection system.
 // This class will provide an injectable service to other components. 
@@ -29,6 +32,7 @@ export class HeroService {
   constructor(private messageService:MessageService, private http: HttpClient) { }
 
   heroesList:Hero[];
+  createdHero?:Hero;
 
   
   getHeroes():Observable<Hero[]>{
@@ -60,10 +64,18 @@ export class HeroService {
     const foundHero = HEROES.find(fHero => fHero.id == hero.id);
     foundHero.counter += foundHero.counter;
   }
+
+  createHero(hero:FormGroup){
+console.log(hero)
+  console.log(this.createdHero)
+    // return hero;
+  }
   
   postHero(hero:Hero){
-
-    this.http.post("http://localhost:3000/heroes", hero);
+console.log(hero)
+const headers = {'content-type': 'application/json'}
+const heroJSON = JSON.stringify(hero);  
+    return this.http.post("http://localhost:3000/heroes", heroJSON, {'headers':headers});
   }
 
 }

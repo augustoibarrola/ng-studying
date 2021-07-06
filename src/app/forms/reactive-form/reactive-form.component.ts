@@ -109,4 +109,8 @@ export class ReactiveFormComponent {
     }
   }
 
+  test(){
+    console.log("hello")
+  }
+
 }

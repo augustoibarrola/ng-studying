@@ -4,11 +4,7 @@
       <h3>Form Validations</h3>
     </legend>
     <div>
-      Custom <strong><code>Validators</code></strong> must be placed in the <code>imports:[]</code> attribute of the
-      corresponding <code>NgModule</code> class.
-
-      <br>
-      <br>
+      Custom <strong><code>Validators</code></strong> must be placed in the <code>imports:[]</code> attribute of the corresponding <code>NgModule</code> class.
 
       <!-- These custom made validators must be annotated with <bold><code>@Directive<span ng-non-bindable>({selector:'customValidator'})</span></code>
       </bold>. <em>Directives</em> are functions that are executed whenever the Angular compiler finds them in the
@@ -82,9 +78,8 @@
 <div *ngIf="reactiveFormValidations">
 
   <div class="row align-items-center">
-    <div class="col-sm-6">
 
-      <!--TODO INSERT CODE SNIPPET HERE  -->
+    <div class="col-sm-6">
       <pre><code [highlight]="formTemplate" (highlighted)="onHighlight($event)" [lineNumbers]="true" class="code language-typescript"></code></pre>
 
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
@@ -115,11 +110,13 @@
         <button type="submit" [disabled]="registerForm.invalid">Submit</button>
       </form>
     </div>
+
     <div class="col-sm-6">
       explanation on code explanation on code explanation on code explanation on code explanation on code explanation on
       code explanation on code explanation on codeexplanation on code explanation on code explanation on code
       explanation on code explanation on code explanation on code explanation on code explanation on code
     </div>
+
   </div>
 </div>
 

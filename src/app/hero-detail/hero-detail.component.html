@@ -10,7 +10,7 @@
 <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
     <div class="form-group">
             <label for="heroName"> Hero Name </label>
-            <input required readonly type="text" id="heroName" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}"/>
+            <input required type="text" id="heroName" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" value="{{hero.name}}" [(ngModel)}]="heroName"/>
     </div >
     <div class="form-group">
         <label for="alias"> Alias </label>

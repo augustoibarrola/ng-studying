@@ -89,7 +89,7 @@ export class ValidationsComponent implements OnInit {
 
   ngOnInit(){
     this.showControlStateTable=false;
-    this.reactiveFormValidations=false;
+    this.reactiveFormValidations=true;
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],

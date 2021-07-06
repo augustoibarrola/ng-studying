@@ -21,8 +21,8 @@
       <br>
       <br>
       Form fields marked with a <b><code>#</code></b> are known as <strong><i>template variables</i></strong>.
-      <div *ngIf="showDirTable">
-        <table class="table">
+      <div *ngIf="!showDirTable" class="table-responsive">
+        <table class="table table-sm table-hover table-striped">
           <thead>
             <tr>
               <th scope="col">Directive Name</th>

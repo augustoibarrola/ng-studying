@@ -4,6 +4,7 @@ import { Location } from '@angular/common'; //https://angular.io/api/common/Loca
 import { Hero } from '../hero';
 import{ HeroService } from '../services/hero-service/hero.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 
 
@@ -21,19 +22,20 @@ export class HeroDetailComponent implements OnInit {
   */
  submittedHero:Hero;
   heroForm:FormGroup;
-
+  heroName:string;
 
  constructor(private route: ActivatedRoute, private heroService: HeroService, private location:Location, private formBuilder:FormBuilder) { }
  
  ngOnInit(): void {
    this.getHero();
-  console.log(this.hero)
+   console.log(this.hero)
    this.heroForm = this.formBuilder.group({
      controlHeroName:['',[Validators.required]],
      controlAlias:['',[Validators.required]],
      controlSuperpower:['',[Validators.required]],
      controlWeakness:['',[Validators.required]],
    })
+   this.submittedHero={id: NaN, name:"", alias:"", superpower:"",weakness:"", counter:NaN};
   }
   
   @Output() outputMsg = new EventEmitter<Hero>(); 
@@ -41,9 +43,9 @@ export class HeroDetailComponent implements OnInit {
     this.outputMsg.emit(hero);
   }
 
-  getHero():void{
+  getHero(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+     this.heroService.getHero(id).subscribe(hero => this.hero = hero);
 
 
     /** route.snapshot => static image of the route information shortly after the component is created
@@ -62,13 +64,15 @@ export class HeroDetailComponent implements OnInit {
   }
 
   onSubmit(heroForm:FormGroup){
-    // this.heroForm.reset();
+console.log(heroForm.value)
+let newHero = this.heroService.createHero(heroForm)
+console.log(this.submittedHero)
 this.submittedHero.name = heroForm.value.controlHeroName;
 this.submittedHero.alias = heroForm.value.controlAlias;
 this.submittedHero.superpower = heroForm.value.controlSuperpower;
 this.submittedHero.weakness = heroForm.value.controlWeakness;
 console.log(this.submittedHero);
-    this.heroService.postHero(this.submittedHero);
+    this.heroService.postHero(this.submittedHero).subscribe(hero => console.log(hero));
   }
 }
 
