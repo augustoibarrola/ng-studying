@@ -27,6 +27,7 @@ export class ButtonDirective implements OnInit {
   constructor(private elementRef:ElementRef){}
   
   ngOnInit():void{
+    this.buttonColor="gray"
     this.elementRef.nativeElement.style.backgroundColor=this.buttonColor;
     this.elementRef.nativeElement.style.color="black";
   }
@@ -39,7 +40,7 @@ export class ButtonDirective implements OnInit {
   /* onMouseLeave will be activated only AFTER the @HostListener decorater 
      detects a 'mouseenter' event on the decorated DOM element.  */
   @HostListener('mouseleave') onMouseLeave(){
-    this.elementRef.nativeElement.style.backgroundColor=null;
+    this.elementRef.nativeElement.style.backgroundColor=this.buttonColor;
     this.elementRef.nativeElement.style.color="black";
   }
 
