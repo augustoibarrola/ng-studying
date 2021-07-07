@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; /* imports RouterModule and Routes give the application routing functionality */
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router'; /* imports RouterModule and Routes give the application routing functionality */
 import { HeroesDeckComponent } from './heroes/heroes-deck/heroes-deck.component';
 import { HeroDetailComponent } from './heroes/heroes-deck/hero-detail/hero-detail.component';
 import { DirectivesDemoComponent } from './notes/directives-demo/directives-demo.component';
@@ -21,7 +21,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], 
+  imports: [RouterModule.forRoot(
+    routes,
+    {preloadingStrategy: PreloadAllModules}
+    )], 
   exports: [RouterModule] 
 })
 export class AppRoutingModule { }

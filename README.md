@@ -25,3 +25,5 @@
 ### Routing 
  - [ ] implement preloading lazy loaded modules 
  - [ ] implement route guards (not a huge need, as this will require a whole rethinking of the application and massive refactoring)
+ - [ ] STUDY https://angular.io/guide/router#custom-preloading-strategy
+    - [ ] basic implementation already in `approutingmodule`, but more complex implementation would be great to understand the concept further
