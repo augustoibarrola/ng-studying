@@ -9,3 +9,8 @@
 - [ ] fix css by removing custom in `styles.css` and fixing with bootstrap
 
 - [ ] have to fix `dashboard` component
+- [ ] REMOVE `dashboard` 
+    - [ ] remove nav anchor (user should not be able to navigate to this item)
+    - [ ] delete dashboard components 
+
+    
