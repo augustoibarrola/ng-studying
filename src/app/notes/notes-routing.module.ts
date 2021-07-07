@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NotesComponent } from './notes.component';
 import { DirectivesDemoComponent } from './directives-demo/directives-demo.component';
 import { FormsComponent } from './forms/forms.component';
 import { TemplateFormComponent } from './forms/template-form/template-form.component';
@@ -12,7 +11,6 @@ import { PipesComponent } from './pipes/pipes.component';
 import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
-  // { path: '', component: NotesComponent },
   {path: 'directives', component: DirectivesDemoComponent},
   {path: 'forms', component: FormsComponent},
   {path: 'template-form', component: TemplateFormComponent},

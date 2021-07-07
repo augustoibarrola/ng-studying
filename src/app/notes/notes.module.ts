@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { NotesRoutingModule } from './notes-routing.module';
 import { NotesComponent } from './notes.component';
@@ -14,7 +13,7 @@ import { RouterComponent } from './router/router.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HighlightModule} from 'ngx-highlightjs';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -40,20 +39,5 @@ import { SharedModule } from '../shared/shared.module';
     NotesRoutingModule,
     SharedModule
   ]
-  // providers: [
-  //   {
-  //     provide: HIGHLIGHT_OPTIONS,
-  //     useValue: {
-  //       coreLibraryLoader: () => import('highlight.js/lib/core'),
-  //       lineNumbersLoader: () => import('highlightjs-line-numbers.js'), // Optional, only if you want the line numbers
-  //       languages: {
-  //         typescript: () => import('highlight.js/lib/languages/typescript'),
-  //         css: () => import('highlight.js/lib/languages/css'),
-  //         xml: () => import('highlight.js/lib/languages/xml'),
-  //         // html: () => import('highlight.js/lib/languages/html'),
-  //       }
-  //     }
-  //   }
-  // ]
 })
 export class NotesModule { }

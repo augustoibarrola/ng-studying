@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MessagesComponent } from './components/messages/messages.component';
 import { ButtonDirective } from './directives/button.directive';
 import { CustomStructuralDirectiveDirective } from './directives/custom-structural-directive.directive';
@@ -14,14 +13,12 @@ import { HeroHonorificPipe } from './pipes/hero-honorific/hero-honorific.pipe';
     CustomStructuralDirectiveDirective, 
     HeroHonorificPipe, 
   ],
-  imports: [
-    // CommonModule
-  ], 
+  imports: [], 
   exports:[
     MessagesComponent,
     ButtonDirective, 
     CustomStructuralDirectiveDirective, 
-    HeroHonorificPipe, 
+    HeroHonorificPipe
   ]
 })
 export class SharedModule { }
