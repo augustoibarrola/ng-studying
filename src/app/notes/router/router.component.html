@@ -121,7 +121,36 @@ user defined name for the component.
   </div>
 
   <div>
-    <h2>Lazy Loading</h2>
+    <div>
 
-    Lazy Loading is done through modules
+      <h2>Lazy Loading</h2>
+      
+      Lazy Loading is done through modules
+
+    </div>
+    <div>
+
+      <h2>Preloading</h2>
+      
+      Although lazy loading improves the initial load time of an application, it can cause performance and UX depending on how big a particular module 
+      that needs to be loaded is. Preloading is used with Lazy Loading for a better user experience. 
+
+      <br>
+
+      Preloading means angular preloads any modules that must be immediately available to the application. When the application compiles, it will compile the main `javascript` bundle required 
+      for the initial landing page, and then it will asynchronously load the bundles that have been marked to be loaded in the background.
+
+      <br>
+
+      Preloading happens in two ways: 
+
+      <br>
+      <ol>
+        <li>No modules are preloaded (default)</li>
+        <li>All modules are preloaded</li>
+      </ol>
+<br>
+      https://angular.io/guide/router#custom-preloading-strategy
+      <br>
+    </div>
   </div>
