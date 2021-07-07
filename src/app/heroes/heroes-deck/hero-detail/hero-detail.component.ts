@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; //https://angular.io/api/router/ActivatedRoute
 import { Location } from '@angular/common'; //https://angular.io/api/common/Location
-import { Hero } from '../hero';
-import{ HeroService } from '../services/hero-service/hero.service';
+import { Hero } from '../../../shared/hero';
+import{ HeroService } from '../../../shared/services/hero-service/hero.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 

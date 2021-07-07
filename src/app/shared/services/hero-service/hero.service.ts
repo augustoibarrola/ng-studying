@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message-service/message.service';
 import { Observable, of } from 'rxjs';
 import { FormGroup } from '@angular/forms';
-import { HeroDetailComponent } from 'src/app/hero-detail/hero-detail.component';
+import { HeroDetailComponent } from 'src/app/heroes/heroes-deck/hero-detail/hero-detail.component';
 
 
 // @Injectable marks the class as one that participates in the dependency injection system.
