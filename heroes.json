@@ -7,7 +7,7 @@
       "alias": "test",
       "superpower": "testtest",
       "weakness": "testestetstetststste",
-      "description": "tettsgyefwderfwkdjnvefwd"
+      "description": "TESTTEST"
     },
     {
       "id": 12,
@@ -57,11 +57,11 @@
     {
       "id": 17,
       "imageSrc": "",
-      "name": "",
-      "alias": "",
-      "superpower": "",
-      "weakness": "",
-      "description": ""
+      "name": "Aquaman",
+      "alias": "Arthur Curry",
+      "superpower": "Control over Water ",
+      "weakness": "!Water",
+      "description": "badass in the water "
     },
     {
       "id": 18,

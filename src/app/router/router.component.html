@@ -10,7 +10,19 @@ Routing is the action of navigating between multiple views in a single page. Alt
 
 <br>
 
+CLI command <code>ng generate guard auth></code> creates an <code>auth.guard.ts</code> file (and corresonding <code>.spec.ts</code> file), where "auth" is a 
+user defined name for the component. 
+
 <!-- <ngx-gist [gistId]="'augustoibarrola/f069ccbc08b189df987750d19239a760'"></ngx-gist> -->
+<!-- <pre [gist]="gistId" (gistLoaded)="gist=$event">
+  <code [highlight]="gist| gistContent: 'app-routing.module.ts'"></code>
+</pre> -->
+
+<!-- <pre>
+  <code [highlight]="{{codeUrl | codeFromUrl}}"></code>
+</pre> -->
+<code data-gist-id="gistId"></code>
+
 
 <br>
 
@@ -44,7 +56,72 @@ Routing is the action of navigating between multiple views in a single page. Alt
            Angular's component router belongs to the <code>@angular/router</code> module.
             </td>
           </tr>
+          <tr>
+            <th scope="row"><code> ActivatedRoute </code></th>
+            <td>
+              <!--<code>@angular/forms</code>-->
+              <code>@angular/router</code>
+            </td>
+            <td>
+              <code>ActivatedRoute</code> is an Angular routing service used to access route paramters. 
+              An instance of this service will contain all the information on routes associated with the service
+              instance's parent component. 
+            </td>
+          </tr>
       </tbody>
     </table>
   </div>
  
+
+  <div>
+    <div>
+      <!-- code -->
+    </div>
+    <div>
+      route guards
+      <br>
+      route guards are the interfaces which communicate to the router on whether a user is allowed to navigate to a requested route or not. 
+      <br>
+      <div class="table-responsive">
+
+      <table class="table table-sm table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Interface</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><code>canActivate</code></th>
+            <td>decides whether a route can be activated or not.</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>canActivateChild</code></th>
+            <td>decides whether a child route can be activated or not.</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>canDeactivate</code></th>
+            <td>decides whether a route can be deactivated or not.</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>canLoad</code></th>
+            <td>decides whether a children can be loaded or not.</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>Resolve</code></th>
+            <td>can be implemented be classes to be a data provider, which is used with the router for resolving data while navigating</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    </div>
+
+  </div>
+
+  <div>
+    <h2>Lazy Loading</h2>
+
+    Lazy Loading is done through modules
+  </div>

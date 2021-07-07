@@ -5,29 +5,40 @@
     an error since, until hero references a non-null/non-undefined value, *ngIf keeps the div off the DOM tree completley. 
 -->
 <div *ngIf="hero">
-    <h2>{{ hero.name | uppercase }} Details </h2>
-<img src="{{hero.imageSrc}}">
-<form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
-    <div class="form-group">
-            <label for="heroNameId"> Hero Name </label>
-            <input required type="text" name="heroName" id="heroNameId" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" />
-    </div >
-    <div class="form-group">
-        <label for="alias"> Alias </label>
-        <input required type="text" id="alias" class="form-control" formControlName="controlAlias" placeholder="{{hero.alias}}" >
-    </div >
-    <div class="form-group">
-        <label for="superpower"> Super Power </label>
-        <input required type="type" id="superpower" class="form-control" formControlName="controlSuperpower" placeholder="{{hero.superpower}}">
-    </div >
-    <div class="form-group">
-        <label for="weakness"> Weakness </label>
-        <input required type="type" id="weakness" class="form-control" formControlName="controlWeakness" placeholder="{{hero.weakness}}">
-    </div >
-    <div class="form-group">
-        <label for="description"> Description </label>
-        <textarea required  id="description" class="form-control" formControlName="controlDescription" placeholder="{{hero.description}}"></textarea>
-    </div >
-    <button class="btn btn-success" type="submit"> Update Hero </button>
-</form>
-</div>
+    <div class="container-fluid">
+       <legend> <h2>{{ hero.name | uppercase }} </h2></legend>
+        <div class="row"> 
+            <div class="col-sm-4">
+                <img class="img-fluid img-thumbnail" src="{{hero.imageSrc}}">
+            </div >
+        </div >
+        <div class="row">
+            <div class="col-sm-4">
+
+                <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
+                    <div class="form-group">
+                        <label for="heroNameId"> Hero Name </label>
+                        <input required type="text" name="heroName" id="heroNameId" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" />
+                    </div >
+                    <div class="form-group">
+                        <label for="alias"> Alias </label>
+                        <input required type="text" id="alias" class="form-control" formControlName="controlAlias" placeholder="{{hero.alias}}" >
+                    </div >
+                    <div class="form-group">
+                        <label for="superpower"> Super Power </label>
+                        <input required type="type" id="superpower" class="form-control" formControlName="controlSuperpower" placeholder="{{hero.superpower}}">
+                    </div >
+                    <div class="form-group">
+                        <label for="weakness"> Weakness </label>
+                        <input required type="type" id="weakness" class="form-control" formControlName="controlWeakness" placeholder="{{hero.weakness}}">
+                    </div >
+                    <div class="form-group">
+                        <label for="description"> Description </label>
+                        <textarea required  id="description" class="form-control" formControlName="controlDescription" placeholder="{{hero.description}}"></textarea>
+                    </div >
+                    <button class="btn btn-success" type="submit"> Update Hero </button>
+                </form>
+            </div >
+            </div >
+        </div>
+    </div>

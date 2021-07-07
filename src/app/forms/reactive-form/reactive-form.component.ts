@@ -75,14 +75,17 @@ export class ReactiveFormComponent {
   ngOnInit() {
     this.showSubmitResults = false;
     this.registerForm = this.formBuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
+      // firstName: ["", [Validators.required]],
+      // lastName: ["", [Validators.required]],
+      firstName: ["", { updateOn: 'blur', validators: [Validators.required]} ],
+      lastName: ["", [Validators.required]],
       address: this.formBuilder.group({
         street: [],
         zip: [],
         city: []
       })
-    })
+    }, 
+    {updateOn: 'submit'});
   }
   
 
