@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightModule} from 'ngx-highlightjs';
 import { SharedModule } from '../shared/shared.module';
+import { LazyLoadingComponent } from './router/lazy-loading/lazy-loading.component';
+import { RouteGuardsComponent } from './router/route-guards/route-guards.component';
+import { RouterLandingPageComponent } from './router/router-landing-page/router-landing-page.component';
 
 
 
@@ -28,7 +31,7 @@ import { SharedModule } from '../shared/shared.module';
     ValidationsComponent,
     PipesComponent, 
     ServicesComponent, 
-    RouterComponent
+    RouterComponent, LazyLoadingComponent, RouteGuardsComponent, RouterLandingPageComponent
   ],
   imports: [
     BrowserModule,

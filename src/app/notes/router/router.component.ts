@@ -11,6 +11,7 @@ export class RouterComponent implements OnInit {
   
   gistId:string="f069ccbc08b189df987750d19239a760";
   codeUrl:string="https://gist.github.com/augustoibarrola/f069ccbc08b189df987750d19239a760"
+  showDiv:Boolean=false;
 
   constructor() { }
 
