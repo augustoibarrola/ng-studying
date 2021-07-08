@@ -12,10 +12,12 @@ import { ServicesComponent } from './services/services.component';
 
 const routes: Routes = [
   {path: 'directives', component: DirectivesDemoComponent},
-  {path: 'forms', component: FormsComponent},
-  {path: 'template-form', component: TemplateFormComponent},
-  {path: 'reactive-form', component: ReactiveFormComponent},
-  {path: 'validations-form', component: ValidationsComponent},
+  {path: 'forms', component: FormsComponent, children: [
+    {path: '', redirectTo:'template-form', pathMatch:'full'},
+    {path: 'template-form', component: TemplateFormComponent},
+    {path: 'reactive-form', component: ReactiveFormComponent},
+    {path: 'validations-form', component: ValidationsComponent},
+  ]},
   {path: 'router', component: RouterComponent},
   {path: 'pipes', component: PipesComponent},
   {path: 'services', component:ServicesComponent},
