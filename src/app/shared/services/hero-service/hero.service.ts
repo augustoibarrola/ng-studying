@@ -83,4 +83,23 @@ export class HeroService {
     return this.http.put<Hero>(`http://localhost:3000/heroes/${hero.id}`, heroJSON, { 'headers': headers });
   }
 
+
+
+  postPicture(picture: File){
+    const headers = { 'content-type': 'application/json' }
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', picture, picture.name);
+
+    return this.http.post("http://localhost:3333/image-api/images", uploadImageData, {observe: 'response'});
+
+  }
+
+  getImage(imageId:any){
+    const headers = { 'content-type': 'application/json' }
+
+    return this.http.get('http://localhost:3333/image-api/images/' + imageId,{ 'headers': headers });
+
+  }
+
 }

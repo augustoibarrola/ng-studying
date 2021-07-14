@@ -27,3 +27,7 @@
  - [ ] implement route guards (not a huge need, as this will require a whole rethinking of the application and massive refactoring)
  - [ ] STUDY https://angular.io/guide/router#custom-preloading-strategy
     - [ ] basic implementation already in `approutingmodule`, but more complex implementation would be great to understand the concept further
+
+
+
+ - [ ] create a OneToOne relationship (for now, increase later) between a hero and an image in the backend

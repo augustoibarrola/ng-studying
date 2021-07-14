@@ -21,6 +21,7 @@
     "@angular/router": "~10.2.4",
     "angular-gist-embed": "0.0.6",
     "bootstrap": "^5.0.2",
+    "jquery": "^3.6.0",
     "json-server": "^0.16.3",
     "ngx-gist": "^1.0.4",
     "ngx-highlightjs": "^4.1.4",
