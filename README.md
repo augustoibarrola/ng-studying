@@ -31,3 +31,8 @@
 
 
  - [ ] create a OneToOne relationship (for now, increase later) between a hero and an image in the backend
+
+
+
+ A million thanks to the following articles for the help and guidance on this app:
+ [Upload and Retrieve Files/Images using Spring Boot + Angular 8 + MySQL](https://medium.com/@rameez.s.shaikh/upload-and-retrieve-images-using-spring-boot-angular-8-mysql-18c166f7bc98)
