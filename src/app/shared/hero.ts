@@ -1,4 +1,5 @@
 // https://angular.io/tutorial/toh-pt1#create-a-hero-interface
+import {Image} from './image';
 
 export class Hero {
   id: number;
@@ -8,4 +9,5 @@ export class Hero {
   superpower:string;
   weakness:string;
   description:string;
+  images: Image[];
 }

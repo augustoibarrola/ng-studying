@@ -33,14 +33,14 @@ export class HeroService {
 
   heroesList: Hero[];
   // createdHero?:Hero;
-  heroesURL: string = "http://localhost:3000/heroes";
+  heroesURL: string = "http://localhost:3333/heroes-api";
 
 
   getHeroes(): Observable<Object> {
     // const heroes = of(HEROES); // of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes
-    const heroes = this.http.get(this.heroesURL);
+    // const heroes = this.http.get(this.heroesURL + "/heroes");
     this.messageService.add('HeroService: fetched heroes');
-    return heroes;
+    return this.http.get(this.heroesURL + "/heroes");;
 
     /**
      * In real world applications, service class methods that make HTTP requests will often have to wait 
@@ -74,13 +74,14 @@ export class HeroService {
   postHero(hero: Hero) {
     const headers = { 'content-type': 'application/json' }
     const heroJSON = JSON.stringify(hero);
-    return this.http.post("http://localhost:3000/heroes", heroJSON, { 'headers': headers });
+    return this.http.post("http://localhost:3333/heroes-api/heroes", heroJSON, { 'headers': headers });
   }
 
   updateHero(hero: Hero) {
     const headers = { 'content-type': 'application/json' }
     const heroJSON = JSON.stringify(hero);
-    return this.http.put<Hero>(`http://localhost:3000/heroes/${hero.id}`, heroJSON, { 'headers': headers });
+    console.log(hero)
+    return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, heroJSON, { 'headers': headers });
   }
 
 
@@ -89,6 +90,7 @@ export class HeroService {
     const headers = { 'content-type': 'application/json' }
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
+    console.log(picture);
     uploadImageData.append('imageFile', picture, picture.name);
 
     return this.http.post("http://localhost:3333/image-api/images", uploadImageData, {observe: 'response'});

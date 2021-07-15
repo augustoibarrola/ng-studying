@@ -51,7 +51,7 @@ export class HeroDetailComponent implements OnInit {
      controlDescription:['',[Validators.required]],
 
     })
-   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:""};
+   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:[]};
    console.log(this.hero)
   }
   
