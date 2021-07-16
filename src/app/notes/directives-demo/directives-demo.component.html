@@ -1,0 +1,26 @@
+<!-- Workspace\angular-tour-of-heroes\src\app\button.directive.ts -->
+<div>
+
+    <h2> Attribute Directives Demo </h2>
+    <p>
+        Type in the desired color for the button in the input field below.
+        When the mouse hovers over the button, it will be assigned the given
+        color. 
+    </p>
+    <input type="text" [(ngModel)]='color'>
+    <button class="btn" [buttonColor]='color' (click)='changeCondition()' buttonDirective > Click </button>
+    
+</div>
+
+<div>
+
+    <h2> Structural Directives Demo </h2>
+    <p *custStructDirective="condition">
+        The custom built structural directive will 
+        remove this paragraph from the DOM when the component's 'condition'
+        property is set to 'true', and reinitialize it when the 'condition' 
+        property is set to 'false'.
+    </p> 
+    <button (click)="changeCondition()"> {{ condition ? 'Show Paragraph' : 'Hide Paragraph'}} </button>
+    
+</div>

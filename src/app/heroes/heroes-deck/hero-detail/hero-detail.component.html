@@ -1,0 +1,92 @@
+<!-- *ngIf 
+    The below code will throw an error since, by design, hero is undefined in the component class on initialization. 
+    Not until a hero is selected above does hero recieve a hero. When this happens, the below code will not throw an error. 
+    Hence, using `*ngIf` will create or destroy depending on if hero is empty or not, and this will stop the code from throwing
+    an error since, until hero references a non-null/non-undefined value, *ngIf keeps the div off the DOM tree completley. 
+-->
+<div *ngIf="hero">
+    <div class="container-fluid">
+       <legend> <h2>{{ hero.name | uppercase }} </h2></legend>
+        <div class="row"> 
+            <div class="col-sm-4">
+                <img class="img-fluid img-thumbnail" src="{{hero.imageSrc}}">
+            </div >
+        </div >
+        <div class="row">
+            <div class="col-sm-4">
+
+                <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
+                    <div class="form-group">
+                        <label for="heroNameId"> Hero Name </label>
+                        <input required type="text" name="heroName" id="heroNameId" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" />
+                    </div >
+                    <div class="form-group">
+                        <label for="alias"> Alias </label>
+                        <input required type="text" id="alias" class="form-control" formControlName="controlAlias" placeholder="{{hero.alias}}" >
+                    </div >
+                    <div class="form-group">
+                        <label for="superpower"> Super Power </label>
+                        <input required type="type" id="superpower" class="form-control" formControlName="controlSuperpower" placeholder="{{hero.superpower}}">
+                    </div >
+                    <div class="form-group">
+                        <label for="weakness"> Weakness </label>
+                        <input required type="type" id="weakness" class="form-control" formControlName="controlWeakness" placeholder="{{hero.weakness}}">
+                    </div >
+                    <div class="form-group">
+                        <label for="description"> Description </label>
+                        <textarea required  id="description" class="form-control" formControlName="controlDescription" placeholder="{{hero.description}}"></textarea>
+                    </div >
+                        <div class="form-group"> 
+                            <label for="profilePicture"> Picture </label>
+                            <input type="file" id="profilePicture" class="form-control" (change)="onFileChanged($event)" formControlName="controlProfilePicture">
+                        </div>
+                        <div class="form-group">
+                            <input type="button" (click)="onUpload()" value="Upload Picture">
+                         </div>
+                    <button class="btn btn-success" type="submit"> Update Hero </button>
+                </form>
+            </div >
+            </div >
+        </div>
+    </div>
+
+
+
+
+    <div class="container row">
+        <div class="col-md-12">
+            <h1>Upload Image</h1>
+        </div>
+    </div>
+    <!-- <form> -->
+        <div class="container row">
+            <div class="col-md-6">
+                <input type="file" (change)="onFileChanged($event)">
+            </div>
+            <div class="col-md-6">
+                <input type="button" (click)="onUpload()" value="upload">
+            </div>
+        </div>
+        <hr />
+        <div class="container row">
+            <div class="col-md-12">
+                <div *ngIf=message>{{message}}</div>
+            </div>
+        </div>
+        <div class="container row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageId"
+                name="name" />
+            </div>
+            <div class="col-md-6">
+                <input type="button" (click)="getImage()" value="Get Image">
+            </div>
+        </div>
+    <!-- </form> -->
+    <div class="container row">
+        <div class="col-md-12">
+            <div *ngIf=retrievedImage>
+                <img [src]="retrievedImage"/>
+            </div>
+        </div>
+    </div>

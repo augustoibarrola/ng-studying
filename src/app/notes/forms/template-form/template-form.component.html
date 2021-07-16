@@ -1,0 +1,167 @@
+<div class="container">
+  <legend><h3>Template Forms</h3></legend>
+  <div class="row">
+    <div>
+      Template forms are used for <b>smaller to medium sized</b> forms (i.e., one with only two or three input fields).
+      <br>
+      <br>
+      <strong><code>ngForm</code></strong> and <strong><code>ngModel</code></strong> <b><i>directives</i></b> are used
+      in template forms to get information about the form and it's controls. <strong><code>ngSubmit</code></strong> is
+      used to submit events.
+      <br>
+      <br>
+      <strong><code>ngForm</code></strong> provides information about the current state of the
+      form including a JSON representation of the form value and the validity state
+      of the entire form
+      <br>
+      <br>
+      <strong>FormsModule</strong> from <strong><code>@angular/forms</code></strong> must be imported in the
+      <b>AppsModule</b> (or whatever module the form's encompassing component is found in) and added to the
+      <b>imports:[]</b> array so that it can be used throughout the components of the application.
+      <br>
+      <br>
+      Form fields marked with a <b><code>#</code></b> are known as <strong><i>template variables</i></strong>.
+      <div *ngIf="!showDirTable" class="table-responsive">
+        <table class="table table-sm table-hover table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Directive Name</th>
+              <th scope="col">Package</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><code>FormsModule</code></th>
+              <td>
+                <!--<code>@angular/forms</code>-->
+              </td>
+              <td>
+                <!--provides information on the current state of the form including the values of the various form fields in a given form and the form's overall validity.-->
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><code>ngForm</code></th>
+              <td>
+                <!--package-->
+              </td>
+              <td>
+                <!--provides information on the current state of the form including the values of the various form fields in a given form and the form's overall validity.-->
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><code>ngModel</code></th>
+              <td>
+                <!--package-->
+              </td>
+              <td>
+                <!--provides <bold>two-way binding</bold> between the html template and the corresponding component. It also allows for tracking the state and validity of the input field -->
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><code>ngSubmit</code></th>
+              <td>
+                <!--package-->
+              </td>
+              <td>
+                <!--angular form specific submit event (<b>not</b> directive). Fires everytime there is a submit event inside of an angular form.-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 align-items-center">
+      <pre><code [highlight]="formModuleImports" (highlighted)="onHighlight($event)" [lineNumbers]="true" class="code language-typescript"></code></pre>
+    </div>
+    <div class="col-sm-6 align-items-top">
+      <!-- explanation for code above  -->
+      <h5><strong><code>import {{'{' }} FormsModule {{'}'}} from '@angular/forms';</code></strong></h5>
+      <strong><code>FormsModule</code></strong> from <strong><code>'@angular/forms'</code></strong> is able to be used 
+      throughout this module's components when imported in the module file: <strong><code>@NgModule({{'{'}}imports:[FormsModule]{{'}'}})</code></strong>.
+      <br>
+      It is a neccessary import in order to use Template Forms in Angular.
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 align-items-center">
+      <pre><code [highlight]="formComponent" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript text-wrap"></code></pre>
+    </div>
+    <div class="col-sm-6 align-items-top">
+      <!-- explanation for code above  -->
+      <!-- <h5><strong><code>import {{'{' }} FormGroup {{'}'}} from '@angular/forms';</code></strong></h5>
+      <strong><code>FormGroup</code></strong> from <strong><code>'@angular/forms'</code></strong> is used to  -->
+      <h5>
+        <strong><code>firstName:string;</code></strong>
+        <br>
+        <strong><code>lastName:string;</code></strong>
+      </h5>
+      The component properties <strong><code>firstName</code></strong> and <strong><code>lastName</code></strong> are created to be <i>bound</i> by <code>[(ngModel)]</code> to their corresponding <code><</code><code>input/></code> tags in the template.
+      <br>
+      <br>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="col-sm-6 align-items-top">
+      <pre><code [highlight]="formTemplate" (highlighted)="onHighlight($event)" [lineNumbers]="true" class="code language-html text-wrap"></code></pre>
+      <div class="">
+        <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef)">
+          <div class="form-group">
+            <label for="firstNameId" class="pb-2">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="firstNameId" [(ngModel)]="firstName"
+            #firstNameVal="ngModel" required />
+          </div>
+          <div *ngIf="firstNameVal.invalid && !firstNameVal.pristine" class="alert alert-danger">
+            First name is required.
+          </div>
+          <div class="form-group pt-3">
+            <label for="lastNameId" class="pb-2">Last Name</label>
+            <input type="text" class="form-control " name="lastName" id="lastNameId" [(ngModel)]="lastName"
+            #lastNameVal="ngModel" required />
+            <div *ngIf="lastNameVal.invalid && !lastNameVal.pristine" class="alert alert-danger">
+              Last name is required.
+            </div>
+          </div>
+          <div class="pt-3">
+              <button type="submit" class="btn btn-primary"> Submit </button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-6 align-items-top">
+
+      <h5><strong><code>#formRef="ngForm"</code></strong></h5>
+      <strong><code>#formRef</code></strong> is a <strong>template variable</strong>.<code>#formRef</code> template
+      variable is then set to <code>ngForm</code> directive.
+      <br>
+      Thus<code>#formRef</code> is an <code>ngForm</code> <b><i>directive instance</i></b> which representing the whole
+      form.
+      <br>
+      <br>
+      <h5><strong><code>(ngSubmit)="onSubmit()"</code></strong></h5>
+      <strong><code></code>ngSubmit</strong> is an Angular form-specific directive that fires anytime a submit event
+      happens within the form it populates. In this example, the <code>onSubmit()</code> function inside the component
+      fires everytime the form is submitted.
+      <br>
+      <br>
+      <h5><strong><code>[(ngModel)]="firstName"</code></strong></h5>
+      This binds the data entered in that particular <code><</code><code>input/></code> field to a same-named
+      <b>component property</b> in the <code>.ts</code> file.
+      <br>
+      If <code>[(ngModel)]</code> is not present in the input field, it will not become part of the
+      <code>#formRef ngForm</code> instance.
+      <br>
+      <br>
+      <h5><strong><code>#firstNameVal="ngModel"</code></strong></h5>
+      Another template variable (this time in the <code><</code><code>input/></code> field, which binds it to an
+      instance of <code>ngModel</code>. This tracks the state of the input field by checking if the user touched the
+      control, if the value has changed, or if the value has become invalid.
+    </div>
+
+  </div>
+</div>

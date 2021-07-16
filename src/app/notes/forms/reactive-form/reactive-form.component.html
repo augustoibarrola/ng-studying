@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+
+    <legend><h3>Reactive Forms</h3></legend>
+    <div>
+
+      Reactive Forms (also called <i>Model Drive Forms</i>) are best suited for <em>Large</em> forms (i.e., forms with
+      more than two or three simple input
+      fields and labels).
+      <br>
+      <br>
+      Reactive Forms work by creating form control objects in the component class of
+      a template and binding those controls with HTML form elements in the template.
+      <br>
+      <br>
+      <strong><code>FormBuilder</code></strong> from <b><code>`@angular/forms`</code></b> is used to create Reactive
+      Forms within the component class.
+      <br>
+      <br>
+      <strong><code>FormGroup</code></strong>, also from <b><code>`@angular/forms`</code></b>, is used to name and represent the form and its values inside the component class by treating it as a <code>FormGroup</code> instance.
+      <br>
+      <br>
+      <strong><code>ReactiveFormsModule</code></strong> from <b><code>`@angular/forms`</code></b>must be imported in the
+      corresponding <b>module</b> of the form's component and then placed inside the
+      <code>imports:[]</code> field of <code><b>@NgModule</b></code> in order to use Reactive Forms in Angular. <code>ReactiveFormsModule</code> replaces <code>FormsModule</code> when creating reactive forms. 
+
+    </div>
+
+  </div>
+
+  <div class="row align items-center">
+    <div class="col-sm-6">
+      <!-- code for ngmodule imports -->
+      <pre><code [highlight]="formModuleImports" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript"></code></pre>
+
+    </div>
+    <div class="col-sm-6">
+      <!-- explanation -->
+      <h5><strong><code>import {{'{' }} ReactiveFormsModule {{'}'}} from '@angular/forms';</code></strong></h5>
+      <strong><code>ReactiveFormsModule</code></strong> from <strong><code>'@angular/forms'</code></strong> replaced <code>FormsModule</code> when wanting more robust, complicatted, alla round larger forms in Angular. It must still be imported in the module file: <strong><code>@NgModule({{'{'}}imports:[ReactiveFormsModule]{{'}'}})</code></strong>.
+  
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class=" col-sm-6 align-items-top">
+      <pre><code [highlight]="formComponent" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-typescript"></code></pre>
+    </div>
+
+    <div class=" col-sm-6 align-items-top">
+      <h5><strong><code>import {{'{' }} FormBuilder {{'}'}} from '@angular/forms';</code></strong></h5>
+      <code>FormGroup</code> is imported to create a group of form controls.
+      <br>
+      <br>
+      <h5><strong><code>registerForm: FormGroup;</code></strong></h5>
+      The component property <code>registerForm</code> is created as a <code>FormGroup</code> instance and is used as a link between the <code><</code><code>form></code> element (and all its values) in the template file and the component file. 
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 align-items-top">
+      <pre><code [highlight]="formTemplate" (highlighted)="onHighlight($event)" [lineNumbers]="true" class=" code language-html" (click)="test()"></code></pre>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="form-group">
+          <label class="label-text-black">First Name</label>
+          <input type="text" class="form-control" formControlName="firstName" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" class="form-control" formControlName="lastName" />
+        </div>
+        <div class="form-group">
+          <fieldset class="fieldset-group" formGroupName="address">
+            <div>
+              <label>Street</label>
+              <input type="text" class="form-control" formControlName="street" />
+            </div>
+            <div>
+              <label>Zip</label>
+              <input type="text" class="form-control" formControlName="zip" />
+            </div>
+            <div>
+              <label>City</label>
+              <input type="text" class="form-control" formControlName="city" />
+            </div>
+          </fieldset>
+        </div>
+        <div class="pt-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      <div *ngIf="showSubmitResults && registerForm.untouched">
+        this div will appear when submit button is hit.
+        <ul>
+          <li>
+            it must disapear when the form is touched again
+          </li>
+          <li>
+            the values submitted through the form must be stored somewhere/how in the component (in a model class of
+            sorts
+            yet to be created) or else they will not appear as the form's values are reset on submission.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class=" col-sm-6 align-items-top">
+      <h5><strong><code>[formGroup]="registerForm"</code></strong></h5>
+
+      <strong><code>[formGroup]</code></strong> is an Angular directive that binds the HTML form tag with the <code>FormGroup</code> property created in the component class (i.e., <code>registerForm: FormGroup</code>). This connects the form and all it's children values to the property in the template's corresponding component class.
+    </div>
+
+  </div>
+
+</div>
