@@ -9,13 +9,13 @@
        <legend> <h2>{{ hero.name | uppercase }} </h2></legend>
         <div class="row"> 
             <div class="col-sm-4">
-                <img class="img-fluid img-thumbnail" src="{{hero.imageSrc}}">
+                <img class="img-fluid img-thumbnail" [src]="imagePathTwo"/>
             </div >
         </div >
         <div class="row">
             <div class="col-sm-4">
 
-                <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
+                <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm, $event)">
                     <div class="form-group">
                         <label for="heroNameId"> Hero Name </label>
                         <input required type="text" name="heroName" id="heroNameId" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" />
@@ -38,7 +38,9 @@
                     </div >
                         <div class="form-group"> 
                             <label for="profilePicture"> Picture </label>
+                            <!-- <input type="file" id="profilePicture" class="form-control" (change)="onFileChanged($event)"> -->
                             <input type="file" id="profilePicture" class="form-control" (change)="onFileChanged($event)" formControlName="controlProfilePicture">
+
                         </div>
                         <div class="form-group">
                             <input type="button" (click)="onUpload()" value="Upload Picture">

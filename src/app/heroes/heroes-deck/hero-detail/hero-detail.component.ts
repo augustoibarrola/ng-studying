@@ -6,6 +6,7 @@ import{ HeroService } from '../../../shared/services/hero-service/hero.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Image } from 'src/app/shared/image';
 
 
 
@@ -38,6 +39,8 @@ export class HeroDetailComponent implements OnInit {
   image;
   imageTwo;
 
+  imagePathTwo;
+
 
  constructor(private route: ActivatedRoute, private heroService: HeroService, private location:Location, private formBuilder:FormBuilder, private _sanitizer: DomSanitizer) { }
  
@@ -49,7 +52,7 @@ export class HeroDetailComponent implements OnInit {
      controlSuperpower:['',[Validators.required]],
      controlWeakness:['',[Validators.required]],
      controlDescription:['',[Validators.required]],
-
+     controlProfilePicture:[]
     })
    this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:[]};
    console.log(this.hero)
@@ -62,9 +65,47 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
-     this.hero = this.heroService.getHero(id);
+     this.heroService.getHero(id).subscribe(res => {
+       this.hero = res[0];
+      console.log(this.hero)
+      console.log(res)
+      this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + JSON.stringify(res[1][0].picByte));
+      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(JSON.stringify(res[1][0].picByte));
+
+      //  for(let i=0;i<this.hero.images.length;i++){
+      //   let test = this.hero.images[i];
+      //           console.log(test);
+      //  }
+
+     })
 
 
+    //  let profilePicture = this.hero.images[0];
+    //  console.log(profilePicture)
+    //  let test = profilePicture as any;
+    //  this.hero.imageSrc = 'data:image/jpeg;base64,' + test.picByte;
+    //  this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(this.hero.imageSrc);
+    //  console.log(this.hero.imageSrc)
+    // 
+    //  getImage() {
+ 
+    //   this.heroService.getImage(this.imageId)
+    //     .subscribe(
+    //       res => {
+    //         this.retrieveResonse = res;
+    //         this.base64Data = this.retrieveResonse.picByte;
+    //         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           
+    //         console.log(this.retrieveResonse)
+          
+  
+    //       // let objectURL = 'data:image/png;base64,' + JSON.stringify(this.retrieveResonse);
+    //       let objectURL = 'data:image/jpeg;base64,' + this.base64Data;
+    //       // this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(objectURL);
+    //       this.imagePath = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+        
+    // })}
+// 
     /** route.snapshot => static image of the route information shortly after the component is created
      * paramMap => dictionary of route parameter values extracted from the URL.
      * 
@@ -80,7 +121,8 @@ export class HeroDetailComponent implements OnInit {
      */
   }
 
-  onSubmit(heroForm:FormGroup){
+  onSubmit(heroForm:FormGroup, event){
+    
 this.submittedHero.id = this.hero.id;
 this.submittedHero.name = heroForm.value.controlHeroName == "" ? this.hero.name : heroForm.value.controlHeroName;
 this.submittedHero.imageSrc =  this.hero.imageSrc;
@@ -88,23 +130,21 @@ this.submittedHero.alias = heroForm.value.controlAlias == "" ? this.hero.alias :
 this.submittedHero.superpower = heroForm.value.controlSuperpower == "" ? this.hero.superpower : heroForm.value.controlSuperpower;
 this.submittedHero.weakness = heroForm.value.controlWeakness == "" ? this.hero.weakness : heroForm.value.controlWeakness;
 this.submittedHero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
+// this.submittedHero.images = this.submittedHero.images.push(event.target.files[0]);
+// this.submittedHero.images.push(event.target.files[0]);
 this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(hero));
   }
 
   onFileChanged(event){
-    console.log(event)
-    console.log(event.target)
-    this.selectedFile = event.target.files[0];
+    this.submittedHero.images.push(event.target.files[0]);
   }
 
   onUpload() {
-    console.log(this.selectedFile);
-    
-  
-    //Make a call to the Spring Boot Application to save the image
-    
-    this.heroService.postPicture(this.selectedFile)
+    console.log(this.submittedHero.images);
+      
+    this.heroService.postPicture(this.submittedHero.images[0], this.submittedHero.id)
     .subscribe((response) => {
+      console.log(response)
       if (response.status === 200) {
         this.message = 'Image uploaded successfully';
       } else {
@@ -116,24 +156,16 @@ this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(he
   }
 
   getImage() {
-    // Make a call to Sprinf Boot to get the Image Bytes.
+ 
     this.heroService.getImage(this.imageId)
-    // this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
       .subscribe(
         res => {
           this.retrieveResonse = res;
           this.base64Data = this.retrieveResonse.picByte;
           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-
-          // this.createImage(this.retrievedImage)
          
-          console.log(this.retrieveResonse)
-        
+          console.log(this.retrievedImage)
 
-        // let objectURL = 'data:image/png;base64,' + JSON.stringify(this.retrieveResonse);
-        let objectURL = 'data:image/jpeg;base64,' + this.base64Data;
-        // this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(objectURL);
-        this.imagePath = this._sanitizer.bypassSecurityTrustUrl(objectURL);
       
   })}
 

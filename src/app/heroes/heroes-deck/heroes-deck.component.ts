@@ -49,8 +49,6 @@ export class HeroesDeckComponent implements OnInit {
       // }
       this.heroes = <Hero[]>heroes;
       this.heroService.heroesList = this.heroes;
-      console.log(heroes)
-      console.log(this.heroes)
     }, 
     error => this.errorMessage = <any>error);
     console.log(this.heroes)

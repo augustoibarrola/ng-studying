@@ -31,6 +31,8 @@
 
 
  - [ ] create a OneToOne relationship (for now, increase later) between a hero and an image in the backend
+ - [ ] fix backend so that hero_id on image table is never without an id; photos cannot be uploaded if not associated with a hero
+ - [ ] create pipe to automatically do the getImage() method in hero-detail-component 
 
 
 
