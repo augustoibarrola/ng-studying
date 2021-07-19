@@ -69,53 +69,35 @@ export class HeroDetailComponent implements OnInit {
        this.hero = res[0];
       console.log(this.hero)
       console.log(res)
-      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + JSON.stringify(res[1][0].picByte));
-      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
-      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
-      this.imagePathTwo='data:image/jpeg;base64,' + res[1][0].picByte;
-console.log(this.imagePathTwo)
-      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(JSON.stringify(res[1][0].picByte));
+      if(res[1] !=null && res[1][0]!=null){
 
-      //  for(let i=0;i<this.hero.images.length;i++){
-      //   let test = this.hero.images[i];
-      //           console.log(test);
-      //  }
+        this.retrieveResonse = res[1][0];
+        this.base64Data = this.retrieveResonse.picByte;
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + JSON.stringify(res[1][0].picByte));
+        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
+        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
+        this.imagePathTwo='data:image/jpeg;base64,' + res[1][0].picByte;
+        console.log(this.retrievedImage)
+        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(JSON.stringify(res[1][0].picByte));
+      }
 
      })
 
-
-    //  let profilePicture = this.hero.images[0];
-    //  console.log(profilePicture)
-    //  let test = profilePicture as any;
-    //  this.hero.imageSrc = 'data:image/jpeg;base64,' + test.picByte;
-    //  this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(this.hero.imageSrc);
-    //  console.log(this.hero.imageSrc)
-    // 
-    //  getImage() {
- 
-    //   this.heroService.getImage(this.imageId)
-    //     .subscribe(
-    //       res => {
-    //         this.retrieveResonse = res;
-    //         this.base64Data = this.retrieveResonse.picByte;
-    //         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-           
-    //         console.log(this.retrieveResonse)
-          
-  
-    //       // let objectURL = 'data:image/png;base64,' + JSON.stringify(this.retrieveResonse);
-    //       let objectURL = 'data:image/jpeg;base64,' + this.base64Data;
-    //       // this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl(objectURL);
-    //       this.imagePath = this._sanitizer.bypassSecurityTrustUrl(objectURL);
-        
-    // })}
-// 
-    /** route.snapshot => static image of the route information shortly after the component is created
-     * paramMap => dictionary of route parameter values extracted from the URL.
-     * 
-     * NOTE: route paramters are ALWAYS STRINGS (hence the `Number()` function that converts the string into an integer).
-     */
   }
+  getImage() {
+ 
+    this.heroService.getImage(this.imageId)
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+         
+          console.log(this.retrieveResonse)
+
+      
+  })}
 
   goBack():void{
     this.location.back();
@@ -136,11 +118,12 @@ this.submittedHero.weakness = heroForm.value.controlWeakness == "" ? this.hero.w
 this.submittedHero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
 // this.submittedHero.images = this.submittedHero.images.push(event.target.files[0]);
 // this.submittedHero.images.push(event.target.files[0]);
-this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(hero));
+this.heroService.updateHero(this.submittedHero)
   }
 
   onFileChanged(event){
     this.submittedHero.images = (event.target.files[0]);
+    console.log(this.submittedHero)
   }
 
   onUpload() {
@@ -158,20 +141,6 @@ this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(he
     );
     
   }
-
-  getImage() {
- 
-    this.heroService.getImage(this.imageId)
-      .subscribe(
-        res => {
-          this.retrieveResonse = res;
-          this.base64Data = this.retrieveResonse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-         
-          console.log(this.retrievedImage)
-
-      
-  })}
 
 }
 

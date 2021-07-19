@@ -87,18 +87,29 @@ export class HeroService {
     return this.http.post("http://localhost:3333/heroes-api/heroes", hero,  {observe: 'response'});
   }
 
-  updateHero(hero: Hero) {
-    console.log(hero)
-    this.postPicture(hero.images[0], hero.id).subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.log(error);
-    });
-
+  test(hero:Hero){
     const headers = { 'content-type': 'application/json' }    
     const heroJSON = JSON.stringify(hero);
     console.log(hero)
     return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, heroJSON, { 'headers': headers });
+  }
+
+  updateHero(hero: Hero) {
+    console.log(hero)
+    if(hero.images!=null){
+      this.postPicture(hero.images, hero.id).subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.log(error);
+      })
+    }
+
+    this.test(hero)//.subscribe(response => console.log(response));
+
+    // const headers = { 'content-type': 'application/json' }    
+    // const heroJSON = JSON.stringify(hero);
+    // console.log(hero)
+    // return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, heroJSON, { 'headers': headers });
   }
 
 
