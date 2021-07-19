@@ -107,9 +107,8 @@ export class HeroService {
     const headers = { 'content-type': 'application/json' }
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
-    console.log(picture);
-    uploadImageData.append('imageFile', picture, picture.name);
 
+    uploadImageData.append('imageFile', picture, picture.name);
     return this.http.post(`http://localhost:3333/image-api/${heroId}/images`, uploadImageData, {observe: 'response'});
 
     // return this.http.post("http://localhost:3333/image-api/images", uploadImageData, {'headers': headers, observe: 'response'});

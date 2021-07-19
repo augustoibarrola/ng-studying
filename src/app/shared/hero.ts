@@ -9,5 +9,5 @@ export class Hero {
   superpower:string;
   weakness:string;
   description:string;
-  images: FormData;
+  images: File;
 }

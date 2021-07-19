@@ -69,7 +69,11 @@ export class HeroDetailComponent implements OnInit {
        this.hero = res[0];
       console.log(this.hero)
       console.log(res)
-      this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + JSON.stringify(res[1][0].picByte));
+      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + JSON.stringify(res[1][0].picByte));
+      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
+      // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
+      this.imagePathTwo='data:image/jpeg;base64,' + res[1][0].picByte;
+console.log(this.imagePathTwo)
       // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(JSON.stringify(res[1][0].picByte));
 
       //  for(let i=0;i<this.hero.images.length;i++){
@@ -142,7 +146,7 @@ this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(he
   onUpload() {
     console.log(this.submittedHero.images);
       
-    this.heroService.postPicture(this.submittedHero.images[0], this.submittedHero.id)
+    this.heroService.postPicture(this.submittedHero.images, this.hero.id)
     .subscribe((response) => {
       console.log(response)
       if (response.status === 200) {
