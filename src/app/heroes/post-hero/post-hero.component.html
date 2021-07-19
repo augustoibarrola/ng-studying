@@ -1,0 +1,82 @@
+    <div class="container-fluid">
+       <legend> <h2>Create A New Hero </h2></legend>
+        <div class="row">
+            <div class="col-sm-4">
+
+                <form [formGroup]="newHeroForm" (ngSubmit)="postNewHero()">
+                    <div class="form-group">
+                        <label for="heroNameId"> Hero Name </label>
+                        <input 
+                            required 
+                            type="text" 
+                            name="heroName" 
+                            id="heroNameId" 
+                            class="form-control" 
+                            formControlName="controlHeroName" 
+                            placeholder="Hero's Name" 
+                        />
+                    </div >
+                    <div class="form-group">
+                        <label for="alias"> Alias </label>
+                        <input 
+                            required 
+                            type="text" 
+                            id="alias" 
+                            class="form-control" 
+                            formControlName="controlAlias" 
+                            placeholder="Hero's Alias" 
+                        />
+                    </div >
+                    <div class="form-group">
+                        <label for="superpower"> Super Power </label>
+                        <input 
+                            required 
+                            type="type" 
+                            id="superpower" 
+                            class="form-control" 
+                            formControlName="controlSuperpower" 
+                            placeholder="Hero's Superpower"
+                        />
+                    </div >
+                    <div class="form-group">
+                        <label for="weakness"> Weakness </label>
+                        <input 
+                            required 
+                            type="type" 
+                            id="weakness" 
+                            class="form-control" 
+                            formControlName="controlWeakness" 
+                            placeholder="Hero's Weakness"
+                        />
+                    </div >
+                    <div class="form-group">
+                        <label for="description"> Description </label>
+                        <textarea 
+                            required  
+                            id="description" 
+                            class="form-control" 
+                            formControlName="controlDescription" 
+                            placeholder="Describe The Hero"
+                        ></textarea>
+                    </div >
+                        <div class="form-group"> 
+                            <label for="profilePicture"> Picture </label>
+                            <input 
+                                type="file"
+                                id="profilePicture" 
+                                class="form-control" 
+                                (change)="onFileChanged($event)" formControlName="controlProfilePicture"
+                            />
+                        </div>
+                        <!-- <div class="form-group">
+                            <input 
+                                type="button" 
+                                (click)="onUpload()" 
+                                value="Upload Picture"
+                            />
+                         </div> -->
+                    <button class="btn btn-success" type="submit"> Update Hero </button>
+                </form>
+            </div >
+            </div >
+        </div>

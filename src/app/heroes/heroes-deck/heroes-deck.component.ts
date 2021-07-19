@@ -43,20 +43,11 @@ export class HeroesDeckComponent implements OnInit {
     //this.heroes = this.heroService.getHeroes();
     //this.heroService.getHeroes() returns Observable<Hero[]> whose .subscribe() method can then be envoked. 
     this.heroService.getHeroes().subscribe(heroes => {
-    
-      // for(let hero of heroes){
-      //   this.heroes.push(hero);
-      // }
-      this.heroes = <Hero[]>heroes;
-      this.heroService.heroesList = this.heroes;
+      this.heroes = heroes;
     }, 
     error => this.errorMessage = <any>error);
-    console.log(this.heroes)
   }
 
-  heroCounterIncrease(hero:Hero):void{
-    this.heroService.incrementCount(hero);
-  }
 
   clearHeroes(){
     this.heroes = [];

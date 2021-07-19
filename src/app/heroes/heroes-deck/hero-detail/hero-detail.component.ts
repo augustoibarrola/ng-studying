@@ -54,7 +54,7 @@ export class HeroDetailComponent implements OnInit {
      controlDescription:['',[Validators.required]],
      controlProfilePicture:[]
     })
-   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:[]};
+   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:null};
    console.log(this.hero)
   }
   
@@ -136,7 +136,7 @@ this.heroService.updateHero(this.submittedHero).subscribe(hero => console.log(he
   }
 
   onFileChanged(event){
-    this.submittedHero.images.push(event.target.files[0]);
+    this.submittedHero.images = (event.target.files[0]);
   }
 
   onUpload() {

@@ -7,6 +7,11 @@
 
 ## To Do 
 
+### Hero
+
+- [ ] post a new hero functionality (without image)
+- [ ] posting a new hero also posts their profile picture image to db
+
 ### Forms
 
 - [ ] add structural directives for `forms.component.html` to show either template, reactive, or validations

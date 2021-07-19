@@ -8,13 +8,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { PostHeroComponent } from './post-hero/post-hero.component';
 
 
 @NgModule({
   declarations: [
     HeroesComponent,
     HeroesDeckComponent, 
-    HeroDetailComponent
+    HeroDetailComponent, PostHeroComponent
   ],
   imports: [
     BrowserModule,

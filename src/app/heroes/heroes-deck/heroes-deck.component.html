@@ -1,6 +1,7 @@
 
    <button (click)="clearHeroes()">Clear Heroes</button>
    <button (click)="callHeroes()">Call Heroes</button>
+   <button [routerLink]="['../new-hero']">Create Hero</button>
    <div *ngIf="heroes?.length > 0; else noHeroesDisplay" >
   <h2>My Heroes</h2>
   <div class="row row-cols-1 row-cols-md-3 g-4">

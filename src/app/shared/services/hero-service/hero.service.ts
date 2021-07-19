@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../../hero';
-import { HEROES } from '../../mock-heroes';
+// import { HEROES } from '../../mock-heroes';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message-service/message.service';
 import { Observable, of } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, AbstractControl } from '@angular/forms';
 import { HeroDetailComponent } from 'src/app/heroes/heroes-deck/hero-detail/hero-detail.component';
+import { Image } from '../../image';
 
 
 // @Injectable marks the class as one that participates in the dependency injection system.
@@ -40,7 +41,7 @@ export class HeroService {
     // const heroes = of(HEROES); // of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes
     // const heroes = this.http.get(this.heroesURL + "/heroes");
     this.messageService.add('HeroService: fetched heroes');
-    return this.http.get(this.heroesURL + "/heroes");
+    return this.http.get<Hero[]>(this.heroesURL + "/heroes");
 
     /**
      * In real world applications, service class methods that make HTTP requests will often have to wait 
@@ -73,15 +74,17 @@ export class HeroService {
   }
 
 
-  incrementCount(Hero: Hero): void {
-    const foundHero = HEROES.find(fHero => fHero.id == fHero.id);
-    // foundHero.counter += foundHero.counter;
-  }
-
-  postHero(Hero: Hero) {
+  postHero(hero: Hero) {
     const headers = { 'content-type': 'application/json' }
-    const heroJSON = JSON.stringify(Hero);
-    return this.http.post("http://localhost:3333/heroes-api/heroes", heroJSON, { 'headers': headers });
+    console.log(hero)
+
+    const heroImage = new FormData();
+
+    // heroImage.append('imageFile', hero.images, hero.images.name)
+    // hero.images = heroImage as Blob;
+
+    // const heroJSON = JSON.stringify(Hero);
+    return this.http.post("http://localhost:3333/heroes-api/heroes", hero,  {observe: 'response'});
   }
 
   updateHero(hero: Hero) {
@@ -120,5 +123,18 @@ export class HeroService {
     return this.http.get('http://localhost:3333/image-api/images/' + imageId,{ 'headers': headers });
 
   }
+
+  // formControlToHero(newHero:AbstractControl):Hero{
+  //   //  controlHeroName
+  //   //   controlAlias
+  //   //   controlSuperpower
+  //   //   controlWeakness
+  //   //   controlDescription
+  //   //   controlProfilePicture
+  //   let hero = new Hero();
+  //   hero.name = newHero.value.controlHeroName
+  //   console.log(hero)
+  //   return hero;
+  // }
 
 }
