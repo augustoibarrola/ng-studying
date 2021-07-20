@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Observable } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Image } from 'src/app/shared/image';
+import { AbstractJsEmitterVisitor } from '@angular/compiler/src/output/abstract_js_emitter';
 
 
 
@@ -28,18 +29,10 @@ export class HeroDetailComponent implements OnInit {
   heroName:string;
   
 
-  selectedFile: File;
-  retrievedImage: any;
-  base64Data: any;
-  retrieveResonse: any;
+  profilePicture: any;
+  pictureHttpResponse: any;
   message: string;
   imageId: any;
-
-  imagePath;
-  image;
-  imageTwo;
-
-  imagePathTwo;
 
 
  constructor(private route: ActivatedRoute, private heroService: HeroService, private location:Location, private formBuilder:FormBuilder, private _sanitizer: DomSanitizer) { }
@@ -52,10 +45,8 @@ export class HeroDetailComponent implements OnInit {
      controlSuperpower:['',[Validators.required]],
      controlWeakness:['',[Validators.required]],
      controlDescription:['',[Validators.required]],
-     controlProfilePicture:[]
     })
-   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:null};
-   console.log(this.hero)
+   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", profilePicture:null};
   }
   
   @Output() outputMsg = new EventEmitter<Hero>(); 
@@ -66,37 +57,22 @@ export class HeroDetailComponent implements OnInit {
   getHero(){
     const id = Number(this.route.snapshot.paramMap.get('id'));
      this.heroService.getHero(id).subscribe(res => {
-       this.hero = res[0];
-      console.log(this.hero)
-      console.log(res)
-      if(res[1] !=null && res[1][0]!=null){
-
-        this.retrieveResonse = res[1][0];
-        this.base64Data = this.retrieveResonse.picByte;
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + JSON.stringify(res[1][0].picByte));
-        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
-        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + res[1][0].picByte) as any;
-        this.imagePathTwo='data:image/jpeg;base64,' + res[1][0].picByte;
-        console.log(this.retrievedImage)
-        // this.imagePathTwo = this._sanitizer.bypassSecurityTrustUrl(JSON.stringify(res[1][0].picByte));
-      }
-
+        this.hero = res;
+        if(this.hero.profilePicture!=null){
+          let imageIdParser = this.hero.profilePicture as Image;
+          this.imageId = imageIdParser.id
+          this.getImage();
+        }
+        console.log(this.hero)
      })
-
   }
+
   getImage() {
- 
     this.heroService.getImage(this.imageId)
       .subscribe(
         res => {
-          this.retrieveResonse = res;
-          this.base64Data = this.retrieveResonse.picByte;
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-         
-          console.log(this.retrieveResonse)
-
-      
+          this.pictureHttpResponse = res;
+          this.profilePicture = 'data:image/jpeg;base64,' + this.pictureHttpResponse.picByte;      
   })}
 
   goBack():void{
@@ -107,39 +83,42 @@ export class HeroDetailComponent implements OnInit {
      */
   }
 
-  onSubmit(heroForm:FormGroup, event){
-    
-this.submittedHero.id = this.hero.id;
-this.submittedHero.name = heroForm.value.controlHeroName == "" ? this.hero.name : heroForm.value.controlHeroName;
-this.submittedHero.imageSrc =  this.hero.imageSrc;
-this.submittedHero.alias = heroForm.value.controlAlias == "" ? this.hero.alias : heroForm.value.controlAlias;
-this.submittedHero.superpower = heroForm.value.controlSuperpower == "" ? this.hero.superpower : heroForm.value.controlSuperpower;
-this.submittedHero.weakness = heroForm.value.controlWeakness == "" ? this.hero.weakness : heroForm.value.controlWeakness;
-this.submittedHero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
-// this.submittedHero.images = this.submittedHero.images.push(event.target.files[0]);
-// this.submittedHero.images.push(event.target.files[0]);
-this.heroService.updateHero(this.submittedHero)
-  }
-
+  
   onFileChanged(event){
-    this.submittedHero.images = (event.target.files[0]);
-    console.log(this.submittedHero)
+    this.submittedHero.profilePicture = (event.target.files[0]);
+    this.uploadProfilePicture();
   }
-
-  onUpload() {
-    console.log(this.submittedHero.images);
-      
-    this.heroService.postPicture(this.submittedHero.images, this.hero.id)
+  
+  uploadProfilePicture() {
+    console.log(this.submittedHero.profilePicture);
+    
+    this.heroService.uploadProfilePicture(this.submittedHero.profilePicture, this.hero.id)
     .subscribe((response) => {
-      console.log(response)
-      if (response.status === 200) {
+      let profilePicture = response.body as Image;
+      if (response.status == 200 || response.status == 201) {
         this.message = 'Image uploaded successfully';
+        this.profilePicture = 'data:image/jpeg;base64,' + profilePicture.picByte;
+        this.hero.profilePicture = this.profilePicture;
+        console.log(response)
       } else {
         this.message = 'Image not uploaded successfully';
       }
     }
     );
     
+  }
+      onSubmit(heroForm:FormGroup){
+    this.submittedHero.id = this.hero.id;
+    this.submittedHero.name = heroForm.value.controlHeroName == "" ? this.hero.name : heroForm.value.controlHeroName;
+    this.submittedHero.imageSrc =  this.hero.imageSrc;
+    this.submittedHero.alias = heroForm.value.controlAlias == "" ? this.hero.alias : heroForm.value.controlAlias;
+    this.submittedHero.superpower = heroForm.value.controlSuperpower == "" ? this.hero.superpower : heroForm.value.controlSuperpower;
+    this.submittedHero.weakness = heroForm.value.controlWeakness == "" ? this.hero.weakness : heroForm.value.controlWeakness;
+    this.submittedHero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
+    // this.submittedHero.profilePicture=null;
+    this.heroService.updateHero(this.submittedHero).subscribe(response =>{
+      console.log(response);
+    })
   }
 
 }

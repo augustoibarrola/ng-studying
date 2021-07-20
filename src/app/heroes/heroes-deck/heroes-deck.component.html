@@ -1,28 +1,25 @@
-
-   <button (click)="clearHeroes()">Clear Heroes</button>
-   <button (click)="callHeroes()">Call Heroes</button>
-   <button [routerLink]="['../new-hero']">Create Hero</button>
-   <div *ngIf="heroes?.length > 0; else noHeroesDisplay" >
+<button class="btn btn-outline-success" [routerLink]="['../new-hero']">Create Hero</button>
+<div *ngIf="heroes?.length > 0; else noHeroesDisplay">
   <h2>My Heroes</h2>
   <div class="row row-cols-1 row-cols-md-3 g-4">
 
-  <div *ngFor="let hero of heroes" class="w-25">
-    <a routerLink="/hero/{{hero.id}}" (outputMsg)="heroCounterIncrease($event)">
-    <div class="col">
-      <div class="card h-100">
-        <img src="{{hero.imageSrc}}" class="card-img-top mw-100 testing " alt="">
-        <div class="card-body">
-          <h5 class="card-title">{{hero.name}}</h5>
-          <p class="card-text">{{hero.description}}</p>
+    <div *ngFor="let hero of heroes" class="w-25">
+      <a routerLink="/hero/{{hero.id}}" (outputMsg)="heroCounterIncrease($event)">
+        <div class="col">
+          <div class="card h-100">
+            <img src="{{hero.imageSrc}}" class="card-img-top mw-100 testing " alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{hero.name}}</h5>
+              <p class="card-text">{{hero.description}}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Id: {{hero.id}}</small>
+            </div>
+          </div>
         </div>
-        <div class="card-footer">
-          <small class="text-muted">Id: {{hero.id}}</small>
-        </div>
-      </div>
+      </a>
     </div>
-  </a>
   </div>
-</div>
 </div>
 
 <ng-template #noHeroesDisplay>

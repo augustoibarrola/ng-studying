@@ -78,53 +78,34 @@ export class HeroService {
     const headers = { 'content-type': 'application/json' }
     console.log(hero)
 
-    const heroImage = new FormData();
 
     // heroImage.append('imageFile', hero.images, hero.images.name)
     // hero.images = heroImage as Blob;
 
     // const heroJSON = JSON.stringify(Hero);
-    return this.http.post("http://localhost:3333/heroes-api/heroes", hero,  {observe: 'response'});
-  }
 
-  test(hero:Hero){
-    const headers = { 'content-type': 'application/json' }    
-    const heroJSON = JSON.stringify(hero);
-    console.log(hero)
-    return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, heroJSON, { 'headers': headers });
+      const uploadImageData = new FormData();
+      // uploadImageData.append('imageFile', hero.images, hero.images.name);
+
+    return this.http.post("http://localhost:3333/heroes-api/heroes", hero, {observe: 'response'});
+
+  // test(hero:Hero){
+  //   const headers = { 'content-type': 'application/json' }    
+  //   const heroJSON = JSON.stringify(hero);
+  //   console.log(hero)
+  //   return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, heroJSON, { 'headers': headers });
   }
 
   updateHero(hero: Hero) {
-    console.log(hero)
-    if(hero.images!=null){
-      this.postPicture(hero.images, hero.id).subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.log(error);
-      })
-    }
-
-    this.test(hero)//.subscribe(response => console.log(response));
-
-    // const headers = { 'content-type': 'application/json' }    
-    // const heroJSON = JSON.stringify(hero);
-    // console.log(hero)
-    // return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, heroJSON, { 'headers': headers });
+    return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, hero);
   }
 
 
 
-  postPicture(picture: File, heroId:number){
-    const headers = { 'content-type': 'application/json' }
-    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+  uploadProfilePicture(picture: File, heroId:number):any{
     const uploadImageData = new FormData();
-
     uploadImageData.append('imageFile', picture, picture.name);
-    return this.http.post(`http://localhost:3333/image-api/${heroId}/images`, uploadImageData, {observe: 'response'});
-
-    // return this.http.post("http://localhost:3333/image-api/images", uploadImageData, {'headers': headers, observe: 'response'});
-    // return this.http.post("http://localhost:3333/image-api/images", uploadImageData, {'headers': headers});
-
+    return this.http.post<any>(`http://localhost:3333/image-api/${heroId}/images`, uploadImageData, {observe: 'response'});
   }
 
   getImage(imageId:any){

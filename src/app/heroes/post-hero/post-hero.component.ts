@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HeroService } from 'src/app/shared/services/hero-service/hero.service';
 import { Hero } from 'src/app/shared/hero';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-post-hero',
@@ -18,28 +20,29 @@ export class PostHeroComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.newHero = new Hero();
+
     this.newHeroForm = this.fb.group({
       controlHeroName:['',[Validators.required]],
       controlAlias:['',[Validators.required]],
       controlSuperpower:['',[Validators.required]],
       controlWeakness:['',[Validators.required]],
       controlDescription:['',[Validators.required]],
-      controlProfilePicture:[]
     })
 
-    this.newHero= {id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:null};
+    // this.newHero= {id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:null};
 
   }
 
   onFileChanged(event){
-    console.log(this.newHero)
     console.log(event.target.files[0])
-    this.newHero.images = (event.target.files[0]);
+    this.newHero.profilePicture = event.target.files[0];
   }
 
   postNewHero(){
+    console.log(this.newHeroForm.value)
     this.newHero.name = this.newHeroForm.value.controlHeroName;
-    this.newHero.alias = this.newHeroForm.value.controlHeroAlias;
+    this.newHero.alias = this.newHeroForm.value.controlAlias;
     this.newHero.superpower = this.newHeroForm.value.controlSuperpower;
     this.newHero.weakness = this.newHeroForm.value.controlWeakness;
     this.newHero.description = this.newHeroForm.value.controlDescription;
@@ -51,5 +54,8 @@ export class PostHeroComponent implements OnInit {
     })
   }
 
+  redirect(){
+
+  }
 
 }
