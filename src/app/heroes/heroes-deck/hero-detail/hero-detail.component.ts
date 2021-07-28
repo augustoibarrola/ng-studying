@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; //https://angular.io/api/router/ActivatedRoute
+import { ActivatedRoute, Router } from '@angular/router'; //https://angular.io/api/router/ActivatedRoute
 import { Location } from '@angular/common'; //https://angular.io/api/common/Location
 import { Hero } from '../../../shared/hero';
 import{ HeroService } from '../../../shared/services/hero-service/hero.service';
@@ -35,7 +35,7 @@ export class HeroDetailComponent implements OnInit {
   imageId: any;
 
 
- constructor(private route: ActivatedRoute, private heroService: HeroService, private location:Location, private formBuilder:FormBuilder, private _sanitizer: DomSanitizer) { }
+ constructor(private route: ActivatedRoute, private router:Router, private heroService: HeroService, private location:Location, private formBuilder:FormBuilder, private _sanitizer: DomSanitizer) { }
  
  ngOnInit(): void {
    this.getHero();
@@ -128,8 +128,8 @@ export class HeroDetailComponent implements OnInit {
     
     this.heroService.deleteHero(JSON.stringify(this.hero.id)).subscribe(response  => {
       console.log(response);
-    }
-    )
+    })
+    this.router.navigate(['/heroes-deck'])
   }
 
 }
