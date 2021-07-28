@@ -116,6 +116,13 @@ export class HeroService {
 
   }
 
+  deleteHero(heroId:string){
+    const headers = { 'content-type': 'application/json' }
+
+    return this.http.delete(`http://localhost:3333/heroes-api/hero/${heroId}`, {'headers': headers});
+
+  }
+
   // formControlToHero(newHero:AbstractControl):Hero{
   //   //  controlHeroName
   //   //   controlAlias

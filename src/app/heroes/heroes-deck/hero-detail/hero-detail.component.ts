@@ -123,6 +123,15 @@ export class HeroDetailComponent implements OnInit {
     })
   }
 
+  deleteHero(){
+    console.log("DELETE HERO");
+    
+    this.heroService.deleteHero(JSON.stringify(this.hero.id)).subscribe(response  => {
+      console.log(response);
+    }
+    )
+  }
+
 }
 
 
