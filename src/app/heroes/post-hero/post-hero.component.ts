@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HeroService } from 'src/app/shared/services/hero-service/hero.service';
 import { Hero } from 'src/app/shared/hero';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-hero',
@@ -16,7 +16,7 @@ export class PostHeroComponent implements OnInit {
   newHero:Hero;
   profilePicture;
 
-  constructor(private heroService: HeroService, private fb:FormBuilder){};
+  constructor(private heroService: HeroService, private fb:FormBuilder, private router:Router){};
 
 
   ngOnInit(): void {
@@ -65,6 +65,7 @@ export class PostHeroComponent implements OnInit {
     this.heroService.uploadProfilePicture(this.profilePicture, heroId)
     .subscribe((response)=>{
       console.log(response);
+      this.router.navigate(['/heroes-deck']);
     }, error => {
       console.log(error);
     })
