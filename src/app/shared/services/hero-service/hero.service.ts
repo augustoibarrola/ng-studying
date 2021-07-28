@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../../hero';
 // import { HEROES } from '../../mock-heroes';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from '../message-service/message.service';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/internal/operators/catchError';
 import { FormGroup, AbstractControl } from '@angular/forms';
 import { HeroDetailComponent } from 'src/app/heroes/heroes-deck/hero-detail/hero-detail.component';
 import { Image } from '../../image';
@@ -119,8 +120,27 @@ export class HeroService {
   deleteHero(heroId:string){
     const headers = { 'content-type': 'application/json' }
 
-    return this.http.delete(`http://localhost:3333/heroes-api/hero/${heroId}`, {'headers': headers});
+    return this.http.delete(`http://localhost:3333/heroes-api/hero/${heroId}`, {'headers': headers}).pipe(catchError(this.handleError));
 
+  }
+
+  private handleError(error: HttpErrorResponse){
+    console.log(error);
+    let errorMessage = '';
+    if(error.error instanceof Error){
+      errorMessage = error.error.message;
+      console.log(errorMessage);
+    } else if (typeof error.error ==='string'){
+      errorMessage = JSON.parse(error.error).errorMessage;
+    }
+    else{
+      if(error.status===0){
+        errorMessage = "A connection with backend cannot be established";
+      }else{
+        errorMessage = error.error.message;
+      }
+    }
+    return throwError(errorMessage)
   }
 
   // formControlToHero(newHero:AbstractControl):Hero{
