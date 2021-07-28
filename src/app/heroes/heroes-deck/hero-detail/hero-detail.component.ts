@@ -90,6 +90,7 @@ export class HeroDetailComponent implements OnInit {
   }
   
   uploadProfilePicture() {
+    console.log("submittedHero before uploading image");
     console.log(this.submittedHero.profilePicture);
     
     this.heroService.uploadProfilePicture(this.submittedHero.profilePicture, this.hero.id)
@@ -99,6 +100,7 @@ export class HeroDetailComponent implements OnInit {
         this.message = 'Image uploaded successfully';
         this.profilePicture = 'data:image/jpeg;base64,' + profilePicture.picByte;
         this.hero.profilePicture = this.profilePicture;
+        console.log("image upload response");
         console.log(response)
       } else {
         this.message = 'Image not uploaded successfully';

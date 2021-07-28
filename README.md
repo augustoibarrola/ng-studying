@@ -9,7 +9,7 @@
 
 ### Hero
 
-- [ ] post a new hero functionality (without image)
+- [x] post a new hero functionality (without image)
 - [ ] posting a new hero also posts their profile picture image to db
 
 ### Forms
@@ -43,3 +43,4 @@
 
  A million thanks to the following articles for the help and guidance on this app:
  [Upload and Retrieve Files/Images using Spring Boot + Angular 8 + MySQL](https://medium.com/@rameez.s.shaikh/upload-and-retrieve-images-using-spring-boot-angular-8-mysql-18c166f7bc98)
+ [One-to-One Relationship in JPA](https://www.baeldung.com/jpa-one-to-one)

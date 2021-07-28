@@ -97,6 +97,7 @@ export class HeroService {
   }
 
   updateHero(hero: Hero) {
+    console.log(hero);
     return this.http.put<Hero>(`http://localhost:3333/heroes-api/hero/${hero.id}`, hero);
   }
 
