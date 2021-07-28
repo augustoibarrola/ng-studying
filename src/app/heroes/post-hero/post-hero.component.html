@@ -62,9 +62,11 @@
                         <div class="form-group"> 
                             <label for="profilePicture"> Picture </label>
                             <input 
+                                required
                                 type="file"
                                 id="profilePicture" 
-                                class="form-control" 
+                                class="form-control"
+                                formControlName="controlProfilePicture" 
                                 (change)="onFileChanged($event)" 
                             />
                         </div>

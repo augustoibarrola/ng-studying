@@ -87,7 +87,7 @@ export class HeroService {
       const uploadImageData = new FormData();
       // uploadImageData.append('imageFile', hero.images, hero.images.name);
 
-    return this.http.post("http://localhost:3333/heroes-api/heroes", hero, {observe: 'response'});
+    return this.http.post<Hero>("http://localhost:3333/heroes-api/heroes", hero);
 
   // test(hero:Hero){
   //   const headers = { 'content-type': 'application/json' }    

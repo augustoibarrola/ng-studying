@@ -14,6 +14,7 @@ export class PostHeroComponent implements OnInit {
 
   newHeroForm:FormGroup;
   newHero:Hero;
+  profilePicture;
 
   constructor(private heroService: HeroService, private fb:FormBuilder){};
 
@@ -28,6 +29,7 @@ export class PostHeroComponent implements OnInit {
       controlSuperpower:['',[Validators.required]],
       controlWeakness:['',[Validators.required]],
       controlDescription:['',[Validators.required]],
+      controlProfilePicture:['', [Validators.required]]
     })
 
     // this.newHero= {id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", images:null};
@@ -37,6 +39,7 @@ export class PostHeroComponent implements OnInit {
   onFileChanged(event){
     console.log(event.target.files[0])
     this.newHero.profilePicture = event.target.files[0];
+    this.profilePicture = event.target.files[0];
   }
 
   postNewHero(){
@@ -49,10 +52,24 @@ export class PostHeroComponent implements OnInit {
 
     this.heroService.postHero(this.newHero).subscribe(response => {
       console.log(response);
+      this.newHero = response;
+      this.newHero.profilePicture = this.profilePicture; 
+      console.log(this.newHero);
+      this.uploadProfilePicture(this.newHero.id);
     }, error => {
       console.log(error);
     })
   }
+
+  uploadProfilePicture(heroId:number){
+    this.heroService.uploadProfilePicture(this.profilePicture, heroId)
+    .subscribe((response)=>{
+      console.log(response);
+    }, error => {
+      console.log(error);
+    })
+  }
+
 
   redirect(){
 

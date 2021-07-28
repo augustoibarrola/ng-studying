@@ -41,6 +41,8 @@
                         <div class="form-group"> 
                             <label for="profilePicture"> Picture </label>
                             <input type="file" id="profilePicture" class="form-control" (change)="onFileChanged($event)" >
+                            <input type="file" id="profilePicture" class="form-control-file" (change)="onFileChanged($event)" >
+
                             <!-- <input type="file" id="profilePicture" class="form-control"> -->
                         </div>
                     <button class="btn btn-success" type="submit"> Update Hero </button>
