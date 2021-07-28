@@ -127,17 +127,20 @@ export class HeroService {
   private handleError(error: HttpErrorResponse){
     console.log(error);
     let errorMessage = '';
-    if(error.error instanceof Error){
+    if(error.error instanceof HttpErrorResponse){
       errorMessage = error.error.message;
       console.log(errorMessage);
     } else if (typeof error.error ==='string'){
       errorMessage = JSON.parse(error.error).errorMessage;
+      console.log(errorMessage);
     }
     else{
       if(error.status===0){
         errorMessage = "A connection with backend cannot be established";
+        console.log(errorMessage);
       }else{
         errorMessage = error.error.message;
+        console.log(errorMessage);
       }
     }
     return throwError(errorMessage)

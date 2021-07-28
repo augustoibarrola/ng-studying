@@ -128,6 +128,8 @@ export class HeroDetailComponent implements OnInit {
     
     this.heroService.deleteHero(JSON.stringify(this.hero.id)).subscribe(response  => {
       console.log(response);
+    }, error => {
+      console.log(error);
     })
     this.router.navigate(['/heroes-deck'])
   }
