@@ -24,7 +24,6 @@ export class HeroDetailComponent implements OnInit {
    * 
    * https://angular.io/api/core/Input
   */
- submittedHero:Hero;
   heroForm:FormGroup;
   heroName:string;
   
@@ -46,7 +45,6 @@ export class HeroDetailComponent implements OnInit {
      controlWeakness:['',[Validators.required]],
      controlDescription:['',[Validators.required]],
     })
-   this.submittedHero={id: NaN, imageSrc:"", name:"", alias:"", superpower:"",weakness:"", description:"", profilePicture:null};
   }
   
   @Output() outputMsg = new EventEmitter<Hero>(); 
@@ -85,15 +83,13 @@ export class HeroDetailComponent implements OnInit {
 
   
   onFileChanged(event){
-    this.submittedHero.profilePicture = (event.target.files[0]);
+    this.hero.profilePicture = (event.target.files[0]);
     this.uploadProfilePicture();
   }
   
   uploadProfilePicture() {
-    console.log("submittedHero before uploading image");
-    console.log(this.submittedHero.profilePicture);
     
-    this.heroService.uploadProfilePicture(this.submittedHero.profilePicture, this.hero.id)
+    this.heroService.uploadProfilePicture(this.hero.profilePicture, this.hero.id)
     .subscribe((response) => {
       let profilePicture = response.body as Image;
       if (response.status == 200 || response.status == 201) {
@@ -110,15 +106,14 @@ export class HeroDetailComponent implements OnInit {
     
   }
       onSubmit(heroForm:FormGroup){
-    this.submittedHero.id = this.hero.id;
-    this.submittedHero.name = heroForm.value.controlHeroName == "" ? this.hero.name : heroForm.value.controlHeroName;
-    this.submittedHero.imageSrc =  this.hero.imageSrc;
-    this.submittedHero.alias = heroForm.value.controlAlias == "" ? this.hero.alias : heroForm.value.controlAlias;
-    this.submittedHero.superpower = heroForm.value.controlSuperpower == "" ? this.hero.superpower : heroForm.value.controlSuperpower;
-    this.submittedHero.weakness = heroForm.value.controlWeakness == "" ? this.hero.weakness : heroForm.value.controlWeakness;
-    this.submittedHero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
-    // this.submittedHero.profilePicture=null;
-    this.heroService.updateHero(this.submittedHero).subscribe(response =>{
+    this.hero.id = this.hero.id;
+    this.hero.name = heroForm.value.controlHeroName == "" ? this.hero.name : heroForm.value.controlHeroName;
+    // this.hero.imageSrc =  this.hero.imageSrc;
+    this.hero.alias = heroForm.value.controlAlias == "" ? this.hero.alias : heroForm.value.controlAlias;
+    this.hero.superpower = heroForm.value.controlSuperpower == "" ? this.hero.superpower : heroForm.value.controlSuperpower;
+    this.hero.weakness = heroForm.value.controlWeakness == "" ? this.hero.weakness : heroForm.value.controlWeakness;
+    this.hero.description = heroForm.value.controlDescription == "" ? this.hero.description : heroForm.value.controlDescription;
+    this.heroService.updateHero(this.hero).subscribe(response =>{
       console.log(response);
     })
   }
