@@ -8,45 +8,53 @@
     <div class="container-fluid">
        <legend> <h2>{{ hero.name | uppercase }} </h2></legend>
         <div class="row"> 
-            <div class="col-sm-4">
+            <div class="col-sm-4 mb-5 mt-2">
                 <img class="img-fluid img-thumbnail" [src]="profilePicture"/>
-                <!-- <img class="img-fluid img-thumbnail" ng-src="'data:image/jpeg;base64',{{imagePathTwo}}"/> -->
-                <!-- <img class="img-fluid img-thumbnail" [src]="imagePathTwo"/> -->
             </div >
         </div >
         <div class="row">
             <div class="col-sm-4">
 
                 <form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
-                    <div class="form-group">
-                        <label for="heroNameId"> Hero Name </label>
-                        <input required type="text" name="heroName" id="heroNameId" class="form-control" formControlName="controlHeroName" placeholder="{{hero.name}}" />
+                    <div class="form-group row mb-3">
+                            <label class="col-form-label col-sm-3 " for="heroNameId"> Name </label>
+                                <div class="col-sm-9">
+                                    <input required class="form-control" type="text" name="heroName" id="heroNameId" formControlName="controlHeroName" placeholder="{{hero.name}}" />
+                                </div>
                     </div >
-                    <div class="form-group">
-                        <label for="alias"> Alias </label>
-                        <input required type="text" id="alias" class="form-control" formControlName="controlAlias" placeholder="{{hero.alias}}" >
-                    </div >
-                    <div class="form-group">
-                        <label for="superpower"> Super Power </label>
-                        <input required type="type" id="superpower" class="form-control" formControlName="controlSuperpower" placeholder="{{hero.superpower}}">
-                    </div >
-                    <div class="form-group">
-                        <label for="weakness"> Weakness </label>
-                        <input required type="type" id="weakness" class="form-control" formControlName="controlWeakness" placeholder="{{hero.weakness}}">
-                    </div >
-                    <div class="form-group">
-                        <label for="description"> Description </label>
-                        <textarea required  id="description" class="form-control" formControlName="controlDescription" placeholder="{{hero.description}}"></textarea>
-                    </div >
-                        <div class="form-group"> 
-                            <label for="profilePicture"> Picture </label>
-                            <input type="file" id="profilePicture" class="form-control" (change)="onFileChanged($event)" >
-                            <input type="file" id="profilePicture" class="form-control-file" (change)="onFileChanged($event)" >
-
-                            <!-- <input type="file" id="profilePicture" class="form-control"> -->
+                    <div class="form-group row mb-3">
+                        <label class="col-form-label col-sm-3" for="alias"> Alias </label>
+                        <div class="col-sm-9">
+                            <input required type="text" id="alias" class="form-control" formControlName="controlAlias" placeholder="{{hero.alias}}" >
                         </div>
-                    <button class="btn btn-success" type="submit"> Update Hero </button>
-                    
+                    </div >
+                    <div class="form-group row mb-3">
+                        <label class="col-form-label col-sm-3" for="superpower"> Power </label>
+                        <div class="col-sm-9">
+                            <input required type="type" id="superpower" class="form-control" formControlName="controlSuperpower" placeholder="{{hero.superpower}}">
+                        </div>
+                    </div >
+                    <div class="form-group row mb-3">
+                        <label class="col-form-label col-sm-3" for="weakness"> Weakness </label>
+                        <div class="col-sm-9">
+                            <input required type="type" id="weakness" class="form-control" formControlName="controlWeakness" placeholder="{{hero.weakness}}">
+                        </div>
+                    </div >
+                    <div class="form-group row mb-3">
+                        <label class="col-form-label col-sm-3" for="description"> Description </label>
+                        <div class="col-sm-9">
+                            <textarea required  id="description" class="form-control" formControlName="controlDescription" placeholder="{{hero.description}}"></textarea>
+                        </div>
+                    </div >
+                        <div class="form-group row mb-3"> 
+                            <label class="col-form-label col-sm-3" for="profilePicture"> Picture </label>
+                            <div class="col-sm-9">
+                                <input type="file" id="profilePicture" class="form-control-file" (change)="onFileChanged($event)" >
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-success" type="submit"> Update Hero </button>
+                        </div>
                 </form>
                 <button class="btn btn-success" (click)=deleteHero()> Delete Hero </button>
             </div >
