@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router'; /* imports RouterModule and Routes give the application routing functionality */
 import { WelcomeComponent } from './welcome/welcome.component';
+import { NavPrimeComponent } from './nav-prime/nav-prime.component';
 
 
 const routes: Routes = [
   {path:'', redirectTo:'welcome', pathMatch:'full'},
   {path: 'welcome', component: WelcomeComponent},
+  {path: 'welcome-test', component: NavPrimeComponent},
   { path: 'notes', loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule) },
   { path: 'heroes', loadChildren: () => import('./heroes/heroes.module').then(m => m.HeroesModule)},
 ];

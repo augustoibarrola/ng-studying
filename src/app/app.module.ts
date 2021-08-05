@@ -9,12 +9,21 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotesRoutingModule } from './notes/notes-routing.module';
 import { HeroesRoutingModule } from './heroes/heroes-routing.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NavPrimeComponent } from './nav-prime/nav-prime.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
+    NavPrimeComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +32,14 @@ import { HeroesRoutingModule } from './heroes/heroes-routing.module';
     ReactiveFormsModule,
     AppRoutingModule,
     NotesRoutingModule,
-    HeroesRoutingModule
+    HeroesRoutingModule,
+    NoopAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     {
